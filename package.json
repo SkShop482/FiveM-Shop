@@ -4,6 +4,7 @@
   "description": "Backend Node.js pour FiveM Store avec OAuth Discord",
   "main": "server.js",
   "scripts": {
+    "build": "npm install",
     "start": "node server.js"
   },
   "dependencies": {
