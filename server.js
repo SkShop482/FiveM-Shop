@@ -20,6 +20,8 @@ const ADMIN_DISCORD_IDS = process.env.ADMIN_DISCORD_IDS
   ? process.env.ADMIN_DISCORD_IDS.split(',').map(id => id.trim())
   : ['1063894863894040747', '1148182031642144809'];
 
+app.set('trust proxy', 1);
+
 app.use(cors({ origin: FRONTEND_URL, credentials: true }));
 app.use(express.json());
 app.use(session({
@@ -35,6 +37,12 @@ app.use(session({
 }));
 
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Debug - affiche les variables au démarrage
+console.log('DISCORD_CLIENT_ID:', DISCORD_CLIENT_ID ? '✅ OK' : '❌ MANQUANT');
+console.log('DISCORD_CLIENT_SECRET:', DISCORD_CLIENT_SECRET ? '✅ OK' : '❌ MANQUANT');
+console.log('REDIRECT_URI:', REDIRECT_URI || '❌ MANQUANT');
+console.log('FRONTEND_URL:', FRONTEND_URL || '❌ MANQUANT');
 
 async function notifierCommande(commande) {
   const { pseudo, avatar, articles, total, discordId } = commande;
@@ -108,7 +116,9 @@ app.get('/auth/discord/callback', async (req, res) => {
       discordId: discordUser.id,
       createdAt: new Date().toISOString()
     };
-    res.redirect(`${FRONTEND_URL}?auth_success=1`);
+    req.session.save(() => {
+      res.redirect(`${FRONTEND_URL}?auth_success=1`);
+    });
   } catch (err) {
     console.error('Discord OAuth error:', err);
     res.redirect(`${FRONTEND_URL}?auth_error=server_error`);
