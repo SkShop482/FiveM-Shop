@@ -1,0 +1,1271 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#f0f0f5;font-family:'Inter',sans-serif;font-size:13px}
+button,input,select,textarea{font-family:'Inter',sans-serif}
+.S{display:none!important}.S.ON{display:block!important}
+#nav{background:#0d0d14;border-bottom:1px solid #2a2a3a;display:flex;align-items:center;padding:0 14px;height:48px;gap:10px;position:sticky;top:0;z-index:99}
+.logo{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:17px;color:#e63946;letter-spacing:2px;white-space:nowrap;cursor:pointer}
+.logo span{color:#f0f0f5}
+#navlinks{display:flex;gap:2px;flex:1}
+.nl{padding:5px 9px;border-radius:5px;cursor:pointer;color:#8888aa;font-size:11px;font-weight:600;transition:.1s;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap;user-select:none}
+.nl:hover{color:#f0f0f5;background:#1a1a24}
+.nl.ACT{color:#f0f0f5;background:#1a1a24}
+#nav-right{display:flex;align-items:center;gap:8px}
+#cart-btn{cursor:pointer;padding:5px 8px;border-radius:5px;border:1px solid #2a2a3a;background:#1a1a24;display:flex;align-items:center;gap:5px;color:#f0f0f5;font-size:12px;font-weight:600;transition:.1s;user-select:none}
+#cart-btn:hover{border-color:#e63946;color:#e63946}
+#cart-badge{background:#e63946;color:#fff;font-size:9px;font-weight:700;min-width:16px;height:16px;border-radius:8px;display:flex;align-items:center;justify-content:center;padding:0 4px}
+.adm-nl{color:#e63946;border:1px solid #e6394633;padding:5px 10px;border-radius:5px;cursor:pointer;font-size:11px;font-weight:600;transition:.1s;user-select:none}
+.adm-nl:hover{background:#e6394618}
+.ava{width:28px;height:28px;border-radius:50%;background:#e63946;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:10px;cursor:pointer}
+.btn-red{background:#e63946;color:#fff;border:none;padding:8px 16px;border-radius:6px;font-weight:600;cursor:pointer;font-size:12px;transition:.1s;display:inline-flex;align-items:center;gap:5px}
+.btn-red:hover{background:#ff4757}
+
+/* HERO */
+#hero{background:#111118;border-bottom:1px solid #2a2a3a;padding:28px 18px;display:flex;align-items:center;justify-content:space-between}
+#hero h1{font-family:'Rajdhani',sans-serif;font-size:28px;font-weight:700;line-height:1.1}
+#hero h1 b{color:#e63946}
+#hero p{color:#8888aa;margin-top:5px;font-size:12px;line-height:1.5}
+.statbar{display:flex;gap:18px;padding:10px 18px;background:#111118;border-bottom:1px solid #2a2a3a;flex-wrap:wrap}
+.stat .n{font-family:'Rajdhani',sans-serif;font-size:18px;font-weight:700;color:#e63946}
+.stat .l{font-size:9px;color:#55556a;text-transform:uppercase;letter-spacing:1px}
+.shop-body{display:grid;grid-template-columns:170px 1fr}
+#sidebar{background:#111118;border-right:1px solid #2a2a3a;padding:12px 8px}
+.sb-ttl{font-size:9px;font-weight:700;color:#55556a;text-transform:uppercase;letter-spacing:1.5px;padding:0 6px;margin:0 0 5px}
+.sbi{display:flex;align-items:center;justify-content:space-between;padding:6px 8px;border-radius:5px;cursor:pointer;color:#8888aa;font-size:12px;transition:.1s;margin-bottom:1px;user-select:none}
+.sbi:hover{background:#1a1a24;color:#f0f0f5}
+.sbi.ON{background:#1a1a24;color:#f0f0f5;border-left:2px solid #e63946}
+.sbn{font-size:10px;color:#55556a;background:#1e1e2a;padding:1px 6px;border-radius:8px}
+.sb-sec{margin-bottom:14px}
+#packs-area{padding:14px}
+.sh-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.sh-ttl{font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-bottom:20px}
+.pc{background:#1a1a24;border:1px solid #2a2a3a;border-radius:7px;overflow:hidden;cursor:pointer;transition:.15s;position:relative}
+.pc:hover{border-color:#e63946;transform:translateY(-2px)}
+.pi{height:92px;display:flex;align-items:center;justify-content:center;font-size:34px;position:relative}
+.pb{position:absolute;top:4px;left:4px;font-size:9px;font-weight:700;padding:2px 5px;border-radius:3px;text-transform:uppercase}
+.pb-n{background:#e63946;color:#fff}
+.pb-p{background:#f39c12;color:#000}
+.pb-fr{position:absolute;top:4px;right:4px;font-size:9px;font-weight:700;padding:2px 5px;border-radius:3px;background:#2ecc71;color:#000}
+.pinfo{padding:8px}
+.pname{font-weight:600;font-size:12px;margin-bottom:1px}
+.pdesc{color:#8888aa;font-size:10px;margin-bottom:6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pfooter{display:flex;align-items:center;justify-content:space-between}
+.pprice{font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;color:#e63946}
+.pprice.fr{color:#2ecc71}
+.pac{background:#1e1e2a;border:none;color:#8888aa;width:24px;height:24px;border-radius:5px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:12px;transition:.1s}
+.pac:hover{background:#e63946;color:#fff}
+
+/* DETAIL */
+#det-inner{padding:14px}
+.brd{display:flex;align-items:center;gap:5px;font-size:11px;color:#55556a;margin-bottom:12px}
+.brd a{color:#8888aa;cursor:pointer}
+.brd a:hover{color:#e63946}
+.det-grid{display:grid;grid-template-columns:1fr 270px;gap:14px}
+.det-img{width:100%;height:220px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:64px;border:1px solid #2a2a3a;background:#1a1a24;margin-bottom:8px}
+.thumbs{display:flex;gap:5px}
+.thumb{width:48px;height:40px;border-radius:5px;background:#1a1a24;border:1px solid #2a2a3a;display:flex;align-items:center;justify-content:center;font-size:16px;cursor:pointer}
+.thumb.ON{border-color:#e63946}
+.dpanel{background:#1a1a24;border:1px solid #2a2a3a;border-radius:7px;padding:14px}
+.dname{font-family:'Rajdhani',sans-serif;font-size:19px;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+.dsub{color:#8888aa;font-size:11px;margin-bottom:8px}
+.stars{color:#ffd700;font-size:11px;margin-bottom:8px}
+.dprice{font-family:'Rajdhani',sans-serif;font-size:26px;font-weight:700;color:#e63946}
+.dprice.fr{color:#2ecc71}
+.dop{color:#55556a;text-decoration:line-through;font-size:13px;margin-left:5px}
+.ddisc{background:#e63946;color:#fff;font-size:9px;font-weight:700;padding:2px 5px;border-radius:3px;margin-left:5px}
+.btn-buy{width:100%;background:#e63946;color:#fff;border:none;padding:10px;border-radius:6px;font-weight:700;font-size:12px;cursor:pointer;margin-top:10px;transition:.1s;display:flex;align-items:center;justify-content:center;gap:5px}
+.btn-buy:hover{background:#ff4757}
+.btn-buy.grn{background:#2ecc71;color:#000}
+.btn-buy.grn:hover{background:#27ae60}
+.btn-fav{width:100%;background:transparent;color:#8888aa;border:1px solid #2a2a3a;padding:7px;border-radius:6px;font-size:11px;cursor:pointer;margin-top:5px;transition:.1s}
+.btn-fav:hover{border-color:#e63946;color:#e63946}
+.dfeats{margin-top:12px;border-top:1px solid #2a2a3a;padding-top:12px}
+.dfeat{display:flex;align-items:center;gap:5px;font-size:11px;margin-bottom:4px;color:#8888aa}
+.dfeat::before{content:'✦';color:#e63946;font-size:8px}
+.dtabs{display:flex;border-bottom:1px solid #2a2a3a;margin:12px 0 10px}
+.dtab{padding:7px 12px;font-size:11px;font-weight:600;cursor:pointer;color:#8888aa;border-bottom:2px solid transparent;transition:.1s;user-select:none}
+.dtab:hover{color:#f0f0f5}
+.dtab.ON{color:#e63946;border-bottom-color:#e63946}
+#d-txt{color:#8888aa;font-size:12px;line-height:1.7;white-space:pre-line}
+.itbl{width:100%;border-collapse:collapse}
+.itbl tr{border-bottom:1px solid #2a2a3a}
+.itbl td{padding:6px 0;font-size:11px}
+.itbl td:first-child{color:#55556a;width:100px}
+
+/* PANIER */
+#cart-inner{padding:14px}
+.cart-grid{display:grid;grid-template-columns:1fr 260px;gap:14px}
+.cart-list{background:#1a1a24;border:1px solid #2a2a3a;border-radius:7px;overflow:hidden}
+.cart-hdr{background:#111118;border-bottom:1px solid #2a2a3a;padding:10px 14px;font-weight:600;font-size:13px}
+.cart-item{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid #2a2a3a}
+.ci-em{width:44px;height:38px;border-radius:5px;background:#111118;border:1px solid #2a2a3a;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.ci-info{flex:1}
+.ci-name{font-weight:600;font-size:12px}
+.ci-cat{color:#8888aa;font-size:10px}
+.ci-price{font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;color:#e63946;margin-right:8px}
+.ci-price.fr{color:#2ecc71}
+.ci-del{background:none;border:none;color:#55556a;cursor:pointer;font-size:14px;padding:4px}
+.ci-del:hover{color:#e63946}
+.cart-summary{background:#1a1a24;border:1px solid #2a2a3a;border-radius:7px;padding:14px}
+.cs-row{display:flex;justify-content:space-between;font-size:12px;margin-bottom:7px;color:#8888aa}
+.cs-total{display:flex;justify-content:space-between;font-family:'Rajdhani',sans-serif;font-size:18px;font-weight:700;border-top:1px solid #2a2a3a;padding-top:10px;margin-top:10px}
+.cs-total span:last-child{color:#e63946}
+
+/* CHECKOUT */
+.chk-steps{display:flex;align-items:center;margin-bottom:20px;background:#111118;border:1px solid #2a2a3a;border-radius:7px;padding:12px 16px}
+.chk-step{display:flex;align-items:center;gap:7px}
+.cs-num{width:24px;height:24px;border-radius:50%;background:#2a2a3a;color:#55556a;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:.2s}
+.cs-lbl{font-size:11px;font-weight:600;color:#55556a;white-space:nowrap}
+.chk-step.ACT .cs-num{background:#e63946;color:#fff}
+.chk-step.ACT .cs-lbl{color:#f0f0f5}
+.chk-step.DONE .cs-num{background:#2ecc71;color:#000}
+.chk-step.DONE .cs-lbl{color:#2ecc71}
+.chk-sep{flex:1;height:1px;background:#2a2a3a;margin:0 8px}
+.chk-grid{display:grid;grid-template-columns:1fr 280px;gap:14px}
+.chk-panel{background:#1a1a24;border:1px solid #2a2a3a;border-radius:7px;padding:18px;margin-bottom:10px}
+.chk-ttl{font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;color:#e63946;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid #2a2a3a}
+.chk-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.chk-fi{display:flex;flex-direction:column;gap:4px}
+.chk-lbl{font-size:10px;font-weight:700;color:#8888aa;text-transform:uppercase;letter-spacing:.5px}
+input.CI,select.CI{background:#0e0e18;border:1px solid #2a2a3a;border-radius:5px;color:#f0f0f5;padding:8px 10px;font-size:12px;outline:none;transition:.1s;width:100%;font-family:'Inter',sans-serif}
+input.CI:focus,select.CI:focus{border-color:#e63946}
+input.CI.ERR{border-color:#e63946!important}
+input.CI.OK{border-color:#2ecc71}
+.pay-methods{display:flex;gap:8px;margin-bottom:14px}
+.pm{flex:1;border:2px solid #2a2a3a;border-radius:7px;padding:10px 8px;cursor:pointer;text-align:center;transition:.15s;background:#0e0e18}
+.pm:hover{border-color:#8888aa}
+.pm.ON{border-color:#e63946;background:#e6394611}
+.pm-icon{font-size:20px;margin-bottom:4px}
+.pm-lbl{font-size:10px;font-weight:600;color:#8888aa}
+.pm.ON .pm-lbl{color:#e63946}
+.cf{display:none}.cf.ON{display:block}
+.oi{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid #2a2a3a}
+.oi:last-child{border-bottom:none}
+.oi-em{width:36px;height:32px;border-radius:4px;background:#111118;border:1px solid #2a2a3a;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.oi-info{flex:1}
+.oi-name{font-size:11px;font-weight:600}
+.oi-cat{font-size:10px;color:#55556a}
+.oi-price{font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;color:#e63946;flex-shrink:0}
+.oi-price.fr{color:#2ecc71}
+.sum-row{display:flex;justify-content:space-between;font-size:11px;color:#8888aa;margin-bottom:6px}
+.sum-total{display:flex;justify-content:space-between;font-family:'Rajdhani',sans-serif;font-size:17px;font-weight:700;border-top:1px solid #2a2a3a;padding-top:10px;margin-top:8px}
+.sum-total span:last-child{color:#e63946}
+.btn-next{width:100%;background:#e63946;color:#fff;border:none;padding:11px;border-radius:6px;font-weight:700;font-size:13px;cursor:pointer;margin-top:12px;transition:.1s;display:flex;align-items:center;justify-content:center;gap:6px}
+.btn-next:hover{background:#ff4757}
+.btn-next:disabled{background:#2a2a3a;color:#55556a;cursor:not-allowed}
+.btn-back{width:100%;background:transparent;color:#8888aa;border:1px solid #2a2a3a;padding:8px;border-radius:6px;font-size:11px;cursor:pointer;margin-top:5px;transition:.1s}
+.btn-back:hover{border-color:#e63946;color:#e63946}
+.secure{display:flex;align-items:center;gap:5px;font-size:10px;color:#55556a;margin-top:8px;justify-content:center}
+.confirm-box{text-align:center;padding:30px 20px}
+.confirm-icon{font-size:56px;margin-bottom:12px}
+.confirm-ttl{font-family:'Rajdhani',sans-serif;font-size:24px;font-weight:700;color:#2ecc71;margin-bottom:5px}
+.confirm-sub{color:#8888aa;font-size:12px;margin-bottom:20px;line-height:1.6}
+.co-row{display:flex;justify-content:space-between;font-size:11px;padding:4px 0;border-bottom:1px solid #1a1a24}
+.co-row:last-child{border-bottom:none}
+.co-row span:first-child{color:#55556a}
+.co-row span:last-child{font-weight:600}
+
+/* ADMIN */
+#adm-hdr{background:#111118;border-bottom:1px solid #2a2a3a;padding:12px 18px;display:flex;align-items:center;justify-content:space-between}
+.adm-ttl{font-family:'Rajdhani',sans-serif;font-size:19px;font-weight:700;color:#e63946;text-transform:uppercase;letter-spacing:2px}
+.adm-body{display:grid;grid-template-columns:190px 1fr}
+#adm-sb{background:#111118;border-right:1px solid #2a2a3a;padding:12px 8px;min-height:500px}
+.an{display:flex;align-items:center;gap:7px;padding:7px 9px;border-radius:5px;cursor:pointer;color:#8888aa;font-size:12px;font-weight:500;margin-bottom:2px;transition:.1s;user-select:none}
+.an:hover{background:#1a1a24;color:#f0f0f5}
+.an.ON{background:#1a1a24;color:#e63946}
+#adm-main{padding:16px}
+.adm-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}
+.ac{background:#1a1a24;border:1px solid #2a2a3a;border-radius:6px;padding:12px}
+.ac-l{font-size:9px;color:#55556a;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.ac-n{font-family:'Rajdhani',sans-serif;font-size:22px;font-weight:700}
+.form-box{background:#1a1a24;border:1px solid #2a2a3a;border-radius:7px;padding:18px}
+.fttl{font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:700;color:#e63946;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.fi{display:flex;flex-direction:column;gap:4px}
+.fi.full{grid-column:1/-1}
+.fl{font-size:10px;font-weight:700;color:#8888aa;text-transform:uppercase;letter-spacing:.5px}
+input.FI,select.FI,textarea.FI{background:#0e0e18;border:1px solid #2a2a3a;border-radius:5px;color:#f0f0f5;padding:7px 9px;font-size:12px;outline:none;transition:.1s;width:100%;font-family:'Inter',sans-serif}
+input.FI:focus,select.FI:focus,textarea.FI:focus{border-color:#e63946}
+textarea.FI{resize:vertical;min-height:65px}
+.upz{border:2px dashed #2a2a3a;border-radius:6px;padding:18px;text-align:center;cursor:pointer;transition:.15s;background:#0e0e18;position:relative;overflow:hidden}
+.upz:hover{border-color:#e63946}
+.upz input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.tog-row{display:flex;align-items:center;gap:10px;background:#0e0e18;border:1px solid #2a2a3a;border-radius:6px;padding:9px 12px;grid-column:1/-1}
+.tog{position:relative;width:38px;height:20px;cursor:pointer;flex-shrink:0;display:inline-block}
+.tog input{opacity:0;position:absolute;width:0;height:0}
+.tsl{position:absolute;inset:0;background:#222232;border-radius:20px;border:1px solid #2a2a3a;transition:.2s}
+.tsl::before{content:'';position:absolute;left:3px;top:3px;width:12px;height:12px;background:#55556a;border-radius:50%;transition:.2s}
+.tog input:checked+.tsl{background:#2ecc71;border-color:#2ecc71}
+.tog input:checked+.tsl::before{transform:translateX(18px);background:#fff}
+.tbl-wrap{background:#1a1a24;border:1px solid #2a2a3a;border-radius:7px;overflow:hidden}
+.tbl-hdr{background:#111118;border-bottom:1px solid #2a2a3a;padding:9px 12px;display:flex;align-items:center;justify-content:space-between}
+table.AT{width:100%;border-collapse:collapse}
+table.AT th{padding:7px 11px;text-align:left;font-size:9px;font-weight:700;color:#55556a;text-transform:uppercase;border-bottom:1px solid #2a2a3a;background:#111118}
+table.AT td{padding:9px 11px;font-size:11px;border-bottom:1px solid #2a2a3a;vertical-align:middle}
+table.AT tr:last-child td{border-bottom:none}
+table.AT tr:hover td{background:#1e1e2a}
+.pis{width:32px;height:28px;border-radius:4px;background:#0e0e18;border:1px solid #2a2a3a;display:flex;align-items:center;justify-content:center;font-size:14px}
+.sbg{display:inline-flex;align-items:center;padding:2px 7px;border-radius:8px;font-size:9px;font-weight:700;text-transform:uppercase}
+.sbg.fr{background:#2ecc7122;color:#2ecc71;border:1px solid #2ecc7155}
+.sbg.pa{background:#e6394622;color:#e63946;border:1px solid #e6394655}
+.abtns{display:flex;gap:4px}
+.ab{padding:3px 8px;border-radius:4px;font-size:10px;font-weight:600;cursor:pointer;border:none;transition:.1s}
+.ab-e{background:#0e0e18;color:#3a9eff;border:1px solid #3a9eff44}
+.ab-e:hover{background:#3a9eff22}
+.ab-d{background:#0e0e18;color:#e63946;border:1px solid #e6394644}
+.ab-d:hover{background:#e6394622}
+
+/* AUTH */
+.auth-overlay{display:none;position:fixed;inset:0;background:#000c;z-index:300;align-items:center;justify-content:center}
+.auth-overlay.ON{display:flex!important}
+.auth-box{background:#111118;border:1px solid #2a2a3a;border-radius:12px;width:380px;max-width:95vw;overflow:hidden}
+.auth-header{background:#0d0d14;border-bottom:1px solid #2a2a3a;padding:16px 18px;display:flex;align-items:center;justify-content:space-between}
+.auth-logo{font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:700;color:#e63946;letter-spacing:2px}
+.auth-logo span{color:#f0f0f5}
+.auth-close{background:none;border:none;color:#55556a;cursor:pointer;font-size:18px;padding:2px 6px;border-radius:4px}
+.auth-close:hover{color:#f0f0f5;background:#1a1a24}
+.auth-tabs{display:flex;border-bottom:1px solid #2a2a3a}
+.auth-tab{flex:1;padding:11px;font-size:12px;font-weight:700;text-align:center;cursor:pointer;color:#55556a;border-bottom:2px solid transparent;transition:.1s;text-transform:uppercase;letter-spacing:.5px;user-select:none}
+.auth-tab:hover{color:#8888aa}
+.auth-tab.ON{color:#e63946;border-bottom-color:#e63946;background:#e6394608}
+.auth-body{padding:20px}
+.auth-fi{display:flex;flex-direction:column;gap:4px;margin-bottom:12px}
+.auth-lbl{font-size:10px;font-weight:700;color:#8888aa;text-transform:uppercase;letter-spacing:.5px}
+input.AI{background:#0e0e18;border:1px solid #2a2a3a;border-radius:6px;color:#f0f0f5;padding:9px 11px;font-size:12px;outline:none;transition:.1s;width:100%;font-family:'Inter',sans-serif}
+input.AI:focus{border-color:#e63946}
+input.AI.ERR{border-color:#e63946!important}
+input.AI.OK{border-color:#2ecc71}
+.btn-discord{width:100%;background:#5865F2;color:#fff;border:none;padding:10px;border-radius:6px;font-weight:700;font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:.1s}
+.btn-discord:hover{background:#4752c4}
+.btn-auth{width:100%;background:#e63946;color:#fff;border:none;padding:10px;border-radius:6px;font-weight:700;font-size:12px;cursor:pointer;margin-top:4px;transition:.1s}
+.btn-auth:hover{background:#ff4757}
+.auth-err{background:#e6394618;border:1px solid #e6394644;border-radius:5px;padding:8px 10px;font-size:11px;color:#e63946;margin-bottom:12px;display:none}
+.auth-err.ON{display:block}
+.auth-ok{background:#2ecc7118;border:1px solid #2ecc7144;border-radius:5px;padding:8px 10px;font-size:11px;color:#2ecc71;margin-bottom:12px;display:none}
+.auth-ok.ON{display:block}
+.auth-div{display:flex;align-items:center;gap:10px;margin:14px 0}
+.auth-div::before,.auth-div::after{content:'';flex:1;height:1px;background:#2a2a3a}
+.auth-div span{font-size:10px;color:#55556a;text-transform:uppercase;letter-spacing:1px}
+.auth-foot{font-size:10px;color:#55556a;text-align:center;margin-top:12px;line-height:1.6}
+.auth-foot a{color:#e63946;cursor:pointer}
+.pw-bar-wrap{height:3px;border-radius:2px;margin-top:4px;background:#2a2a3a;overflow:hidden}
+.pw-bar{height:100%;border-radius:2px;transition:.3s;width:0}
+.user-menu-wrap{position:relative}
+.user-menu{position:absolute;top:36px;right:0;background:#1a1a24;border:1px solid #2a2a3a;border-radius:7px;min-width:160px;padding:5px;z-index:100;display:none}
+.user-menu.ON{display:block}
+.um-item{padding:7px 10px;border-radius:5px;font-size:11px;cursor:pointer;color:#8888aa;display:flex;align-items:center;gap:6px;transition:.1s}
+.um-item:hover{background:#111118;color:#f0f0f5}
+.um-item.red{color:#e63946}
+.um-item.red:hover{background:#e6394618}
+.um-sep{height:1px;background:#2a2a3a;margin:4px 0}
+
+/* TAGS */
+.tag{display:inline-flex;align-items:center;gap:4px;padding:2px 7px;border-radius:10px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;background:#1e1e2a;color:#8888aa;border:1px solid #2a2a3a;white-space:nowrap}
+.tag-rm{background:none;border:none;color:inherit;cursor:pointer;font-size:10px;line-height:1;padding:0;opacity:.6}
+.tag-rm:hover{opacity:1}
+.tag-list{display:flex;flex-wrap:wrap;gap:4px;min-height:28px}
+.tag-input-wrap{display:flex;gap:6px;margin-bottom:8px}
+.tag-input-wrap input{flex:1}
+.tag-color{width:28px;height:28px;border-radius:5px;border:1px solid #2a2a3a;background:#0e0e18;cursor:pointer;padding:2px}
+.pack-tags{display:flex;flex-wrap:wrap;gap:3px;margin-top:4px}
+.pack-tag{display:inline-flex;align-items:center;padding:1px 6px;border-radius:8px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.3px}
+.tag-check-row{display:flex;flex-wrap:wrap;gap:6px;padding:8px 0}
+.tag-check{display:flex;align-items:center;gap:5px;padding:4px 9px;border-radius:5px;border:1px solid #2a2a3a;background:#0e0e18;cursor:pointer;font-size:11px;font-weight:600;transition:.1s;user-select:none}
+.tag-check input{display:none}
+.tag-check.sel{border-color:var(--tc);background:var(--tc-bg)}
+.tag-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+
+/* MODAL */
+.mdlbg{display:none;position:fixed;inset:0;background:#000b;z-index:200;align-items:center;justify-content:center}
+.mdlbg.ON{display:flex!important}
+.mdlbox{background:#1a1a24;border:1px solid #2a2a3a;border-radius:10px;padding:22px;width:320px;text-align:center}
+.micon{font-size:40px;margin-bottom:8px}
+.mttl{font-family:'Rajdhani',sans-serif;font-size:18px;font-weight:700;margin-bottom:5px}
+.mdesc{color:#8888aa;font-size:11px;margin-bottom:16px;line-height:1.5}
+.mbtns{display:flex;gap:7px;justify-content:center}
+.mbdl{background:#2ecc71;color:#000;border:none;padding:8px 18px;border-radius:5px;font-weight:700;cursor:pointer;font-size:12px}
+.mbc{background:#1e1e2a;color:#8888aa;border:1px solid #2a2a3a;padding:8px 14px;border-radius:5px;cursor:pointer;font-size:11px}
+
+.toast{position:fixed;bottom:14px;right:14px;background:#2ecc71;color:#000;padding:9px 16px;border-radius:6px;font-weight:700;font-size:11px;z-index:999;display:none;align-items:center;gap:5px}
+.toast.ON{display:flex!important}
+</style>
+
+<!-- NAV -->
+<div id="nav">
+  <div class="logo" id="logo">⬡ FiveM <span>STORE</span></div>
+  <div id="navlinks">
+    <div class="nl ACT" id="nl-home">Accueil</div>
+    <div class="nl" id="nl-packs">Packs</div>
+    <div class="nl" id="nl-armes">Armes</div>
+    <div class="nl" id="nl-veh">Véhicules</div>
+    <div class="nl" id="nl-scripts">Scripts</div>
+    <div class="nl" id="nl-maps">Maps</div>
+  </div>
+  <div id="nav-right">
+    <div id="cart-btn">🛒 Panier <div id="cart-badge">0</div></div>
+    <div class="adm-nl" id="adm-btn" style="display:none">⚙ Admin</div>
+    <div id="nav-auth-out" style="display:flex;align-items:center;gap:6px">
+      <div class="nl" id="btn-login" style="border:1px solid #2a2a3a">Connexion</div>
+      <div class="btn-red" id="btn-register" style="font-size:11px;padding:5px 11px">S'inscrire</div>
+    </div>
+    <div id="nav-auth-in" style="display:none" class="user-menu-wrap">
+      <div class="ava" id="nav-ava">?</div>
+      <div class="user-menu" id="user-menu">
+        <div class="um-item" style="font-weight:700;color:#f0f0f5;pointer-events:none" id="um-name">—</div>
+        <div class="um-sep"></div>
+        <div class="um-item" id="um-cart">🛒 Mon panier</div>
+        <div class="um-item" id="um-orders">📦 Mes commandes</div>
+        <div class="um-sep"></div>
+        <div class="um-item red" id="um-logout">🚪 Se déconnecter</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SHOP -->
+<div id="pg-shop" class="S ON">
+  <div id="hero">
+    <div>
+      <h1>LA PLUS GRANDE BIBLIOTHÈQUE<br>DE <b>MODS FIVEM</b></h1>
+      <p>Des centaines de packs graphiques, scripts et plus.<br>Optimise ton expérience RP.</p>
+      <button class="btn-red" style="margin-top:12px" id="hero-btn">▶ DÉCOUVRIR LES PACKS</button>
+    </div>
+    <div style="font-size:70px;opacity:.07">⬡</div>
+  </div>
+  <div class="statbar">
+    <div class="stat"><div class="n" id="s-tot">6</div><div class="l">Packs disponibles</div></div>
+    <div class="stat"><div class="n">2 850</div><div class="l">Mods exclusifs</div></div>
+    <div class="stat"><div class="n">8 750</div><div class="l">Utilisateurs</div></div>
+    <div class="stat"><div class="n">100%</div><div class="l">Sécurisé</div></div>
+  </div>
+  <div class="shop-body">
+    <div id="sidebar">
+      <div class="sb-sec">
+        <div class="sb-ttl">Navigation</div>
+        <div class="sbi ON" id="sbi-all">🏠 Tous <span class="sbn" id="sbn-all">6</span></div>
+        <div class="sbi" id="sbi-free">🆓 Gratuits <span class="sbn" id="sbn-free">2</span></div>
+        <div class="sbi" id="sbi-paid">👑 Payants <span class="sbn" id="sbn-paid">4</span></div>
+        <div class="sbi" id="sbi-new">🆕 Nouveaux</div>
+      </div>
+      <div class="sb-sec">
+        <div class="sb-ttl">Catégories</div>
+        <div class="sbi" id="sbi-Graphiques">🎨 Graphiques <span class="sbn" id="sbn-G">2</span></div>
+        <div class="sbi" id="sbi-Armes">🔫 Armes <span class="sbn" id="sbn-A">1</span></div>
+        <div class="sbi" id="sbi-Vehicules">🚗 Véhicules <span class="sbn" id="sbn-V">1</span></div>
+        <div class="sbi" id="sbi-Scripts">📜 Scripts <span class="sbn" id="sbn-S">1</span></div>
+        <div class="sbi" id="sbi-Maps">🗺️ Maps <span class="sbn" id="sbn-M">1</span></div>
+      </div>
+    </div>
+    <div id="packs-area">
+      <div class="sh-row"><div class="sh-ttl" id="sh-ttl1">⚡ PACKS POPULAIRES</div><div style="color:#e63946;font-size:10px;font-weight:700;cursor:pointer" id="see-all1">VOIR TOUT →</div></div>
+      <div class="grid" id="g1"></div>
+      <div class="sh-row" id="sh2-row"><div class="sh-ttl">🆕 DERNIERS AJOUTS</div><div style="color:#e63946;font-size:10px;font-weight:700;cursor:pointer" id="see-all2">VOIR TOUT →</div></div>
+      <div class="grid" id="g2"></div>
+    </div>
+  </div>
+</div>
+
+<!-- DETAIL -->
+<div id="pg-detail" class="S">
+  <div id="det-inner">
+    <div class="brd"><a id="brd-home">Accueil</a> › <a id="brd-shop">Boutique</a> › <span id="d-brd" style="color:#f0f0f5"></span></div>
+    <div class="det-grid">
+      <div>
+        <div class="det-img" id="d-img"></div>
+        <div class="thumbs" id="d-thumbs"></div>
+        <div class="dtabs">
+          <div class="dtab ON" id="dtab-desc">Description</div>
+          <div class="dtab" id="dtab-install">Installation</div>
+          <div class="dtab" id="dtab-maj">Mises à jour</div>
+        </div>
+        <div id="d-txt"></div>
+      </div>
+      <div>
+        <div class="dpanel">
+          <div id="d-bdgs" style="display:flex;gap:4px;margin-bottom:6px;flex-wrap:wrap"></div>
+          <div class="dname" id="d-name"></div>
+          <div class="dsub" id="d-sub"></div>
+          <div class="stars">★★★★★ <span style="color:#8888aa;font-size:10px">4.8 (320 avis)</span></div>
+          <div style="display:flex;align-items:baseline;flex-wrap:wrap;gap:2px">
+            <span id="d-price" class="dprice"></span>
+            <span id="d-op" class="dop"></span>
+            <span id="d-disc" class="ddisc" style="display:none"></span>
+          </div>
+          <button class="btn-buy" id="d-btn"></button>
+          <button class="btn-fav">♡ Ajouter aux favoris</button>
+          <div class="dfeats" id="d-feats"></div>
+        </div>
+        <div style="background:#1a1a24;border:1px solid #2a2a3a;border-radius:7px;padding:12px;margin-top:10px">
+          <div style="font-size:9px;font-weight:700;color:#55556a;text-transform:uppercase;letter-spacing:1px;margin-bottom:7px">Informations</div>
+          <table class="itbl"><tr><td>Compatibilité</td><td>FiveM</td></tr><tr><td>Protection</td><td>✅ Sécurisé</td></tr><tr><td>Téléchargements</td><td id="d-dls">—</td></tr></table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PANIER -->
+<div id="pg-cart" class="S">
+  <div id="cart-inner">
+    <div style="font-family:'Rajdhani',sans-serif;font-size:20px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px">🛒 Mon Panier</div>
+    <div class="cart-grid">
+      <div>
+        <div class="cart-list">
+          <div class="cart-hdr">Articles (<span id="cart-count-label">0</span>)</div>
+          <div id="cart-items-list"></div>
+        </div>
+      </div>
+      <div>
+        <div class="cart-summary">
+          <div style="font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:700;margin-bottom:12px;text-transform:uppercase;letter-spacing:1px">Récapitulatif</div>
+          <div class="cs-row"><span>Sous-total HT</span><span id="cs-sub">0.00 €</span></div>
+          <div class="cs-row"><span>TVA (20%)</span><span id="cs-tva">0.00 €</span></div>
+          <div class="cs-total"><span>Total TTC</span><span id="cs-total">0.00 €</span></div>
+          <button class="btn-red" style="width:100%;padding:10px;font-size:13px;justify-content:center;margin-top:12px" id="btn-checkout">✅ PASSER AU PAIEMENT →</button>
+          <button class="btn-fav" style="margin-top:6px;font-size:11px" id="btn-continue">← Continuer mes achats</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CHECKOUT -->
+<div id="pg-checkout" class="S">
+  <div style="padding:14px;max-width:860px;margin:0 auto">
+    <div class="chk-steps">
+      <div class="chk-step DONE" id="ck-s1"><div class="cs-num" id="cn1">✓</div><div class="cs-lbl">Panier</div></div>
+      <div class="chk-sep"></div>
+      <div class="chk-step ACT" id="ck-s2"><div class="cs-num" id="cn2">2</div><div class="cs-lbl">Informations</div></div>
+      <div class="chk-sep"></div>
+      <div class="chk-step" id="ck-s3"><div class="cs-num" id="cn3">3</div><div class="cs-lbl">Paiement</div></div>
+      <div class="chk-sep"></div>
+      <div class="chk-step" id="ck-s4"><div class="cs-num" id="cn4">4</div><div class="cs-lbl">Confirmation</div></div>
+    </div>
+    <!-- Step 2 -->
+    <div id="ck-step2" class="chk-grid">
+      <div>
+        <div class="chk-panel">
+          <div class="chk-ttl">👤 Informations personnelles</div>
+          <div class="chk-row"><div class="chk-fi"><label class="chk-lbl">Prénom *</label><input class="CI" id="ck-fn" placeholder="Jean" type="text"></div><div class="chk-fi"><label class="chk-lbl">Nom *</label><input class="CI" id="ck-ln" placeholder="Dupont" type="text"></div></div>
+          <div class="chk-fi" style="margin-bottom:10px"><label class="chk-lbl">Email *</label><input class="CI" id="ck-em" placeholder="jean@exemple.com" type="email"></div>
+          <div class="chk-fi"><label class="chk-lbl">Discord (optionnel)</label><input class="CI" id="ck-dc" placeholder="jean#1234" type="text"></div>
+        </div>
+        <div class="chk-panel">
+          <div class="chk-ttl">🏠 Facturation</div>
+          <div class="chk-fi" style="margin-bottom:10px"><label class="chk-lbl">Adresse *</label><input class="CI" id="ck-ad" placeholder="12 rue de la Paix" type="text"></div>
+          <div class="chk-row"><div class="chk-fi"><label class="chk-lbl">Ville *</label><input class="CI" id="ck-ci" placeholder="Paris" type="text"></div><div class="chk-fi"><label class="chk-lbl">Code postal *</label><input class="CI" id="ck-zp" placeholder="75001" type="text"></div></div>
+          <div class="chk-fi" style="margin-top:10px"><label class="chk-lbl">Pays</label><select class="CI" id="ck-co"><option value="FR">🇫🇷 France</option><option value="BE">🇧🇪 Belgique</option><option value="CH">🇨🇭 Suisse</option><option value="CA">🇨🇦 Canada</option></select></div>
+        </div>
+      </div>
+      <div>
+        <div class="chk-panel">
+          <div class="chk-ttl">🛒 Récapitulatif</div>
+          <div id="ck-items1"></div>
+          <div style="height:1px;background:#2a2a3a;margin:10px 0"></div>
+          <div class="sum-row"><span>Sous-total</span><span id="ck-sub1">0 €</span></div>
+          <div class="sum-row"><span>TVA 20%</span><span id="ck-tva1">0 €</span></div>
+          <div class="sum-total"><span>Total TTC</span><span id="ck-ttc1">0 €</span></div>
+          <button class="btn-next" id="btn-step3">CONTINUER → PAIEMENT</button>
+          <button class="btn-back" id="btn-back-cart">← Retour au panier</button>
+          <div class="secure">🔒 Paiement 100% sécurisé SSL</div>
+        </div>
+      </div>
+    </div>
+    <!-- Step 3 -->
+    <div id="ck-step3" style="display:none" class="chk-grid">
+      <div>
+        <div class="chk-panel">
+          <div class="chk-ttl">💳 Méthode de paiement</div>
+          <div class="pay-methods">
+            <div class="pm ON" id="pm-card"><div class="pm-icon">💳</div><div class="pm-lbl">Carte</div></div>
+            <div class="pm" id="pm-paypal"><div class="pm-icon">🅿️</div><div class="pm-lbl">PayPal</div></div>
+            <div class="pm" id="pm-crypto"><div class="pm-icon">₿</div><div class="pm-lbl">Crypto</div></div>
+            <div class="pm" id="pm-paysafe"><div class="pm-icon">🎫</div><div class="pm-lbl">Paysafe</div></div>
+          </div>
+          <div class="cf ON" id="cf-card">
+            <div class="chk-fi" style="margin-bottom:10px"><label class="chk-lbl">Numéro de carte *</label><input class="CI" id="ck-cnum" placeholder="1234 5678 9012 3456" maxlength="19" type="text"></div>
+            <div class="chk-row"><div class="chk-fi"><label class="chk-lbl">Expiration *</label><input class="CI" id="ck-exp" placeholder="MM/AA" maxlength="5" type="text"></div><div class="chk-fi"><label class="chk-lbl">CVV *</label><input class="CI" id="ck-cvv" placeholder="123" maxlength="4" type="password"></div></div>
+            <div class="chk-fi" style="margin-top:10px"><label class="chk-lbl">Nom sur la carte *</label><input class="CI" id="ck-cname" placeholder="JEAN DUPONT" type="text"></div>
+          </div>
+          <div class="cf" id="cf-paypal"><div class="chk-fi" style="margin-top:10px"><label class="chk-lbl">Email PayPal</label><input class="CI" id="ck-pp" placeholder="paypal@exemple.com" type="email"></div></div>
+          <div class="cf" id="cf-crypto"><div style="background:#0e0e18;border:1px solid #2a2a3a;border-radius:6px;padding:12px;margin-top:10px"><div class="chk-fi"><label class="chk-lbl">Cryptomonnaie</label><select class="CI" id="ck-coin"><option value="BTC">₿ Bitcoin</option><option value="ETH">Ξ Ethereum</option><option value="LTC">Ł Litecoin</option><option value="USDT">₮ Tether</option></select></div><div style="margin-top:8px;font-size:10px;color:#55556a;font-family:monospace;word-break:break-all">bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh</div></div></div>
+          <div class="cf" id="cf-paysafe"><div class="chk-fi" style="margin-top:10px"><label class="chk-lbl">Code Paysafecard *</label><input class="CI" id="ck-psc" placeholder="0000-0000-0000-0000" maxlength="19" type="text"></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="chk-panel">
+          <div class="chk-ttl">🛒 Récapitulatif</div>
+          <div id="ck-items2"></div>
+          <div style="height:1px;background:#2a2a3a;margin:10px 0"></div>
+          <div class="sum-row"><span>Sous-total</span><span id="ck-sub2">0 €</span></div>
+          <div class="sum-row"><span>TVA 20%</span><span id="ck-tva2">0 €</span></div>
+          <div class="sum-total"><span>Total TTC</span><span id="ck-ttc2">0 €</span></div>
+          <button class="btn-next" id="btn-pay">🔒 PAYER MAINTENANT</button>
+          <button class="btn-back" id="btn-back-info">← Retour aux infos</button>
+          <div class="secure">🔒 Paiement 100% sécurisé SSL</div>
+        </div>
+      </div>
+    </div>
+    <!-- Step 4 -->
+    <div id="ck-step4" style="display:none">
+      <div class="chk-panel confirm-box">
+        <div class="confirm-icon">✅</div>
+        <div class="confirm-ttl">COMMANDE CONFIRMÉE !</div>
+        <div class="confirm-sub">Merci pour ton achat 🎉<br>Email envoyé à <strong id="confirm-email">—</strong><br>Tes packs sont prêts à être téléchargés.</div>
+        <div style="background:#0e0e18;border:1px solid #2a2a3a;border-radius:7px;padding:12px;margin-bottom:16px;text-align:left" id="confirm-details"></div>
+        <button class="btn-next" id="btn-confirm-home" style="max-width:300px;margin:0 auto">🏠 RETOUR À LA BOUTIQUE</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN -->
+<div id="pg-admin" class="S">
+  <div id="adm-hdr">
+    <div class="adm-ttl">⚙ Panel Admin</div>
+    <button class="btn-red" id="adm-back">← Retour boutique</button>
+  </div>
+  <div class="adm-body">
+    <div id="adm-sb">
+      <div class="an ON" id="an-dash">📊 Dashboard</div>
+      <div class="an" id="an-add">➕ Ajouter un pack</div>
+      <div class="an" id="an-manage">📦 Gérer les packs</div>
+      <div class="an" id="an-tags">🏷️ Tags</div>
+      <div class="an" id="an-orders">🛒 Commandes</div>
+    </div>
+    <div id="adm-main">
+      <div id="as-dash">
+        <div class="adm-cards">
+          <div class="ac"><div class="ac-l">Total packs</div><div class="ac-n" style="color:#e63946" id="ac-t">6</div></div>
+          <div class="ac"><div class="ac-l">Gratuits</div><div class="ac-n" style="color:#2ecc71" id="ac-f">2</div></div>
+          <div class="ac"><div class="ac-l">Payants</div><div class="ac-n" style="color:#3a9eff" id="ac-p">4</div></div>
+          <div class="ac"><div class="ac-l">Téléchargements</div><div class="ac-n" style="color:#ffd700">1 250</div></div>
+        </div>
+        <div style="background:#1a1a24;border:1px solid #2a2a3a;border-radius:7px;padding:22px;text-align:center;color:#8888aa">
+          <div style="font-size:34px;margin-bottom:7px">📊</div>
+          <div style="font-weight:600;font-size:13px;margin-bottom:3px;color:#f0f0f5">Bienvenue dans le panel admin</div>
+          <div style="font-size:11px">Utilise le menu à gauche pour gérer tes packs.</div>
+        </div>
+      </div>
+      <div id="as-add" style="display:none">
+        <div class="form-box">
+          <div class="fttl">➕ Ajouter / Modifier un pack</div>
+          <div class="fg">
+            <div class="fi"><label class="fl">Nom du pack *</label><input class="FI" id="f-name" placeholder="Ex: Weapon Pack V3" type="text"></div>
+            <div class="fi"><label class="fl">Catégorie</label><select class="FI" id="f-cat"><option>Graphiques</option><option>Armes</option><option>Véhicules</option><option>Scripts</option><option>Maps</option><option>Sons</option></select></div>
+            <div class="fi full"><label class="fl">Description *</label><textarea class="FI" id="f-desc" placeholder="Décris le contenu..."></textarea></div>
+            <div class="fi full"><label class="fl">Image du pack</label><div class="upz"><input type="file" accept="image/*" multiple id="f-img-input"><div style="font-size:22px;margin-bottom:5px">🖼️</div><div style="font-size:11px;color:#8888aa">Glisse ici ou clique — PNG/JPG/WEBP</div></div><div id="img-prev" style="display:flex;flex-wrap:wrap;gap:5px;margin-top:6px"></div></div>
+            <div class="fi full"><label class="fl">🔗 Lien de téléchargement</label><input class="FI" id="f-dl-url" type="url" placeholder="https://exemple.com/mon-pack.zip" style="width:100%"><div id="file-prev" style="font-size:10px;color:#2ecc71;margin-top:5px"></div></div>
+            <div class="tog-row">
+              <label class="tog"><input type="checkbox" id="f-free"><div class="tsl"></div></label>
+              <div><div style="font-size:12px;font-weight:600;color:#f0f0f5">🆓 Pack GRATUIT</div><div style="font-size:10px;color:#55556a;margin-top:2px">Active pour remplacer "Acheter" par "Télécharger gratuitement"</div></div>
+            </div>
+            <div class="fi" id="fi-price"><label class="fl">Prix (€) *</label><input class="FI" id="f-price" placeholder="9.99" type="number" min="0" step="0.01"></div>
+            <div class="fi" id="fi-op"><label class="fl">Ancien prix (€)</label><input class="FI" id="f-op" placeholder="19.99" type="number" min="0" step="0.01"></div>
+            <div class="fi"><label class="fl">Badge</label><select class="FI" id="f-badge"><option value="">Aucun</option><option value="NOUVEAU">NOUVEAU</option><option value="POPULAIRE">POPULAIRE</option></select></div>
+            <div class="fi"><label class="fl">Emoji / Icône</label><input class="FI" id="f-em" type="text" maxlength="2" value="📦"></div>
+            <div class="fi full"><label class="fl">🏷️ Tags</label><div class="tag-check-row" id="f-tags-row"><div style="font-size:11px;color:#55556a">Crée d'abord des tags dans la section 🏷️ Tags</div></div></div>
+            <div class="fi full"><button class="btn-red" style="width:100%;padding:11px;font-size:13px;justify-content:center" id="btn-save-pack">➕ PUBLIER LE PACK</button></div>
+          </div>
+        </div>
+      </div>
+      <div id="as-manage" style="display:none">
+        <div class="tbl-wrap">
+          <div class="tbl-hdr"><div style="font-weight:600;font-size:12px">📦 Packs (<span id="tbl-c">6</span>)</div><button class="btn-red" style="font-size:10px;padding:5px 10px" id="tbl-add-btn">+ Ajouter</button></div>
+          <table class="AT"><thead><tr><th>Pack</th><th>Cat.</th><th>Prix</th><th>Statut</th><th>🆓 Gratuit</th><th>Actions</th></tr></thead><tbody id="tbl-body"></tbody></table>
+        </div>
+      </div>
+      <div id="as-tags" style="display:none">
+        <div class="form-box" style="margin-bottom:14px">
+          <div class="fttl">🏷️ Créer un tag</div>
+          <div class="tag-input-wrap">
+            <input class="FI" id="tag-name-input" placeholder="Ex: Exclusif, FiveM, HD…" maxlength="20" type="text">
+            <input type="color" class="tag-color" id="tag-color-input" value="#e63946" title="Couleur du tag">
+            <button class="btn-red" id="btn-add-tag" style="white-space:nowrap;padding:7px 14px">+ Ajouter</button>
+          </div>
+          <div class="tag-list" id="global-tag-list"></div>
+        </div>
+      </div>
+      <div id="as-orders" style="display:none"><div style="text-align:center;padding:36px;color:#8888aa"><div style="font-size:40px;margin-bottom:8px">🛒</div><div style="font-size:13px;font-weight:600;color:#f0f0f5">Commandes</div><div style="font-size:11px;margin-top:4px">Aucune commande pour l'instant.</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL DL -->
+<div class="mdlbg" id="mdl">
+  <div class="mdlbox"><div class="micon">📥</div><div class="mttl" id="mdl-name">Pack</div><div class="mdesc">Ce pack est <strong style="color:#2ecc71">gratuit</strong> !<br>Clique pour télécharger.</div><div class="mbtns"><button class="mbdl" id="mdl-dl">⬇ Télécharger</button><button class="mbc" id="mdl-cancel">Annuler</button></div></div>
+</div>
+
+<!-- AUTH -->
+<div class="auth-overlay" id="auth-overlay">
+  <div class="auth-box">
+    <div class="auth-header"><div class="auth-logo">⬡ FiveM <span>STORE</span></div><button class="auth-close" id="auth-close">✕</button></div>
+    <div class="auth-tabs"><div class="auth-tab ON" id="atab-login">Connexion</div><div class="auth-tab" id="atab-register">S'inscrire</div></div>
+    <div class="auth-body">
+      <div class="auth-err" id="auth-err"></div>
+      <div class="auth-ok" id="auth-ok"></div>
+      <button class="btn-discord" id="btn-discord">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.001.022.014.043.031.056a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 13.97 13.97 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.3 12.3 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+        Continuer avec Discord
+      </button>
+      <div class="auth-div"><span>ou par email</span></div>
+      <div id="aform-login">
+        <div class="auth-fi"><label class="auth-lbl">Email</label><input class="AI" id="l-email" type="email" placeholder="jean@exemple.com"></div>
+        <div class="auth-fi"><label class="auth-lbl">Mot de passe</label><input class="AI" id="l-pass" type="password" placeholder="••••••••"></div>
+        <div style="text-align:right;margin:-4px 0 12px"><a style="font-size:10px;color:#55556a;cursor:pointer" id="a-forgot">Mot de passe oublié ?</a></div>
+        <button class="btn-auth" id="btn-login-submit">SE CONNECTER</button>
+        <div class="auth-foot">Pas encore de compte ? <a id="a-to-reg">S'inscrire</a></div>
+      </div>
+      <div id="aform-register" style="display:none">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div class="auth-fi"><label class="auth-lbl">Prénom</label><input class="AI" id="r-fn" type="text" placeholder="Jean"></div>
+          <div class="auth-fi"><label class="auth-lbl">Nom</label><input class="AI" id="r-ln" type="text" placeholder="Dupont"></div>
+        </div>
+        <div class="auth-fi"><label class="auth-lbl">Email</label><input class="AI" id="r-email" type="email" placeholder="jean@exemple.com"></div>
+        <div class="auth-fi"><label class="auth-lbl">Pseudo</label><input class="AI" id="r-pseudo" type="text" placeholder="DarkPlayer42" maxlength="20"></div>
+        <div class="auth-fi"><label class="auth-lbl">Mot de passe</label><input class="AI" id="r-pass" type="password" placeholder="Min. 8 caractères">
+          <div class="pw-bar-wrap"><div class="pw-bar" id="pw-bar"></div></div></div>
+        <div class="auth-fi"><label class="auth-lbl">Confirmer</label><input class="AI" id="r-pass2" type="password" placeholder="••••••••"></div>
+        <div style="display:flex;align-items:flex-start;gap:7px;margin:8px 0 12px;font-size:10px;color:#8888aa"><input type="checkbox" id="r-cgu" style="accent-color:#e63946;margin-top:2px"><label for="r-cgu">J'accepte les <a style="color:#e63946;cursor:pointer">conditions d'utilisation</a></label></div>
+        <button class="btn-auth" id="btn-reg-submit">CRÉER MON COMPTE</button>
+        <div class="auth-foot"><a id="a-to-login">← Se connecter</a></div>
+      </div>
+      <div id="aform-forgot" style="display:none">
+        <div class="auth-fi"><label class="auth-lbl">Email</label><input class="AI" id="f-email" type="email" placeholder="jean@exemple.com"></div>
+        <button class="btn-auth" id="btn-forgot-submit">ENVOYER LE LIEN</button>
+        <div class="auth-foot"><a id="a-back-login">← Retour à la connexion</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast">✅ <span id="tmsg"></span></div>
+
+<script>
+// ===== DATA =====
+var packs = [
+  {id:1,name:'FPS Boost Pack',desc:'Optimise ton jeu +FPS',cat:'Graphiques',price:0,op:null,free:true,badge:'',em:'🎨',dls:1250,dlUrl:'',feats:['Optimisation FPS +40%','Textures légères','Compatible tous serveurs']},
+  {id:2,name:'Weapon Pack V2',desc:"Pack d'armes réalistes",cat:'Armes',price:9.99,op:19.99,free:false,badge:'NOUVEAU',em:'🔫',dls:880,dlUrl:'',feats:['+150 armes réalistes','Textures 4K / 8K','Sons personnalisés']},
+  {id:3,name:'Realistic Graphics',desc:'Graphismes réalistes 5K',cat:'Graphiques',price:14.99,op:null,free:false,badge:'POPULAIRE',em:'🎨',dls:2100,dlUrl:'',feats:['Graphismes 5K ultra','Effets météo dynamiques','Lumières réalistes']},
+  {id:4,name:'Car Pack 2024',desc:'Pack de voitures customs',cat:'Véhicules',price:19.99,op:null,free:false,badge:'NOUVEAU',em:'🚗',dls:630,dlUrl:'',feats:['50+ voitures customs','Textures haute qualité','Sons moteur réalistes']},
+  {id:5,name:'Night Vision Pack',desc:'Vision nocturne améliorée',cat:'Scripts',price:0,op:null,free:true,badge:'NOUVEAU',em:'🌙',dls:450,dlUrl:'',feats:['Vision nocturne HD','3 modes différents','Touche configurable']},
+  {id:6,name:'MLO Mega Pack',desc:'+50 MLO exclusifs',cat:'Maps',price:24.99,op:null,free:false,badge:'NOUVEAU',em:'🗺️',dls:320,dlUrl:'',feats:['+50 MLO exclusifs','Optimisé serveurs RP','Documentation incluse']}
+];
+var cart=[], curPack=null, mdlPack=null, curFilter='all', editingId=null, curPM='card';
+var users=[], curUser=null;
+var globalTags=[]; // {id, name, color}
+var BG={'🔫':'#160d10','🚗':'#0a1018','🎨':'#100a16','📦':'#141008','🌙':'#090912','🗺️':'#0a1208','🔊':'#100a0a','💥':'#140808'};
+
+// ===== NAVIGATION =====
+function G(page) {
+  var all=['shop','detail','cart','checkout','admin'];
+  all.forEach(function(p){
+    var el=document.getElementById('pg-'+p);
+    if(el){ if(p===page){el.classList.add('ON');el.classList.remove('S');}else{el.classList.remove('ON');el.classList.add('S');} }
+  });
+  document.querySelectorAll('.nl').forEach(function(e){e.classList.remove('ACT');});
+  if(page==='shop'){document.getElementById('nl-home').classList.add('ACT'); renderPacks();}
+  if(page==='cart') renderCart();
+  if(page==='admin'){renderTable();updateStats();}
+}
+
+function filterCat(f){
+  curFilter=f;
+  document.querySelectorAll('.sbi').forEach(function(e){e.classList.remove('ON');});
+  document.querySelectorAll('.nl').forEach(function(e){e.classList.remove('ACT');});
+  var map={all:'sbi-all',free:'sbi-free',paid:'sbi-paid',new:'sbi-new',Graphiques:'sbi-Graphiques',Armes:'sbi-Armes',Véhicules:'sbi-Vehicules',Scripts:'sbi-Scripts',Maps:'sbi-Maps'};
+  var nlMap={all:'nl-home',Graphiques:'nl-packs',Armes:'nl-armes',Véhicules:'nl-veh',Scripts:'nl-scripts',Maps:'nl-maps'};
+  if(map[f]){var el=document.getElementById(map[f]);if(el)el.classList.add('ON');}
+  if(nlMap[f]){var nl=document.getElementById(nlMap[f]);if(nl)nl.classList.add('ACT');}
+  renderPacks();
+}
+
+function getFiltered(){
+  var f=curFilter;
+  if(f==='all') return packs;
+  if(f==='free') return packs.filter(function(p){return p.free;});
+  if(f==='paid') return packs.filter(function(p){return !p.free;});
+  if(f==='new') return packs.filter(function(p){return p.badge==='NOUVEAU';});
+  return packs.filter(function(p){return p.cat===f;});
+}
+
+function mkCard(p){
+  var em=p.em||'📦';var bg=BG[em]||'#141420';
+  var tagsHtml='';
+  if(p.tags&&p.tags.length){
+    tagsHtml='<div class="pack-tags">'+p.tags.map(function(tid){
+      var t=globalTags.find(function(x){return x.id===tid;});
+      if(!t)return'';
+      return'<span class="pack-tag" style="color:'+t.color+';background:'+hexToRgba(t.color,0.13)+';border:1px solid '+t.color+'44">'+t.name+'</span>';
+    }).join('')+'</div>';
+  }
+  return '<div class="pc" data-id="'+p.id+'">'+
+    '<div class="pi" style="background:'+bg+'">'+em+
+    (p.badge?'<span class="pb '+(p.badge==='NOUVEAU'?'pb-n':'pb-p')+'">'+p.badge+'</span>':'')+
+    (p.free?'<span class="pb-fr">GRATUIT</span>':'')+
+    '</div><div class="pinfo"><div class="pname">'+p.name+'</div>'+
+    '<div class="pdesc">'+p.desc+'</div>'+
+    tagsHtml+
+    '<div class="pfooter" style="margin-top:5px"><div class="pprice'+(p.free?' fr':'')+'">'+( p.free?'GRATUIT':p.price.toFixed(2)+' €')+'</div>'+
+    '<button class="pac" data-action="'+(p.free?'dl':'cart')+'" data-id="'+p.id+'">'+(p.free?'⬇':'🛒')+'</button>'+
+    '</div></div></div>';
+}
+
+function renderPacks(){
+  var list=getFiltered();
+  var g1=document.getElementById('g1'),g2=document.getElementById('g2');
+  var r2=document.getElementById('sh2-row');
+  if(list.length===0){
+    if(g1)g1.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:30px;color:#55556a"><div style="font-size:34px">🔍</div><div style="margin-top:7px">Aucun pack dans cette catégorie</div></div>';
+    if(g2)g2.innerHTML='';
+    if(r2)r2.style.display='none';
+  } else if(list.length<=4){
+    if(g1)g1.innerHTML=list.map(mkCard).join('');
+    if(g2)g2.innerHTML='';
+    if(r2)r2.style.display='none';
+  } else {
+    if(g1)g1.innerHTML=list.slice(0,4).map(mkCard).join('');
+    if(g2)g2.innerHTML=list.slice(-4).map(mkCard).join('');
+    if(r2)r2.style.display='flex';
+  }
+  var tot=packs.length,fr=packs.filter(function(p){return p.free;}).length;
+  var el;
+  el=document.getElementById('s-tot');if(el)el.textContent=tot;
+  el=document.getElementById('sbn-all');if(el)el.textContent=tot;
+  el=document.getElementById('sbn-free');if(el)el.textContent=fr;
+  el=document.getElementById('sbn-paid');if(el)el.textContent=tot-fr;
+  el=document.getElementById('sbn-G');if(el)el.textContent=packs.filter(function(p){return p.cat==='Graphiques';}).length;
+  el=document.getElementById('sbn-A');if(el)el.textContent=packs.filter(function(p){return p.cat==='Armes';}).length;
+  el=document.getElementById('sbn-V');if(el)el.textContent=packs.filter(function(p){return p.cat==='Véhicules';}).length;
+  el=document.getElementById('sbn-S');if(el)el.textContent=packs.filter(function(p){return p.cat==='Scripts';}).length;
+  el=document.getElementById('sbn-M');if(el)el.textContent=packs.filter(function(p){return p.cat==='Maps';}).length;
+}
+
+// délégation clics sur les grilles
+document.getElementById('g1').addEventListener('click',function(e){
+  var card=e.target.closest('.pc');var btn=e.target.closest('.pac');
+  if(btn){e.stopPropagation();var id=parseInt(btn.dataset.id);if(btn.dataset.action==='dl')openMdl(id);else{addCart(id);}return;}
+  if(card)openDet(parseInt(card.dataset.id));
+});
+document.getElementById('g2').addEventListener('click',function(e){
+  var card=e.target.closest('.pc');var btn=e.target.closest('.pac');
+  if(btn){e.stopPropagation();var id=parseInt(btn.dataset.id);if(btn.dataset.action==='dl')openMdl(id);else{addCart(id);}return;}
+  if(card)openDet(parseInt(card.dataset.id));
+});
+
+// ===== DETAIL =====
+function openDet(id){
+  var p=packs.find(function(x){return x.id===id;});if(!p)return;
+  curPack=p; G('detail');
+  document.getElementById('d-brd').textContent=p.name;
+  var di=document.getElementById('d-img');di.textContent=p.em;di.style.background=BG[p.em]||'#141420';
+  document.getElementById('d-name').textContent=p.name;
+  document.getElementById('d-sub').textContent=p.desc;
+  document.getElementById('d-dls').textContent=p.dls.toLocaleString('fr');
+  var dp=document.getElementById('d-price'),dop=document.getElementById('d-op'),ddisc=document.getElementById('d-disc');
+  if(p.free){dp.textContent='GRATUIT';dp.className='dprice fr';dop.textContent='';ddisc.style.display='none';}
+  else{dp.textContent=p.price.toFixed(2)+' €';dp.className='dprice';if(p.op){dop.textContent=p.op.toFixed(2)+' €';ddisc.textContent='-'+Math.round((1-p.price/p.op)*100)+'%';ddisc.style.display='inline';}else{dop.textContent='';ddisc.style.display='none';}}
+  var btn=document.getElementById('d-btn');
+  if(p.free){btn.textContent='⬇ TÉLÉCHARGER GRATUITEMENT';btn.className='btn-buy grn';btn.onclick=function(){openMdl(p.id);};}
+  else{btn.textContent='🛒 ACHETER / AJOUTER AU PANIER';btn.className='btn-buy';btn.onclick=function(){addCart(p.id);};}
+  var bds=document.getElementById('d-bdgs');bds.innerHTML='';
+  if(p.badge)bds.innerHTML+='<span class="pb '+(p.badge==='NOUVEAU'?'pb-n':'pb-p')+'" style="position:static">'+p.badge+'</span>';
+  if(p.free)bds.innerHTML+='<span class="pb-fr" style="position:static">GRATUIT</span>';
+  document.getElementById('d-feats').innerHTML='<div style="font-size:9px;font-weight:700;color:#55556a;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Contenu</div>'+p.feats.map(function(f){return '<div class="dfeat">'+f+'</div>';}).join('');
+  setDtab('desc');
+  var thr=document.getElementById('d-thumbs');
+  thr.innerHTML=[p.em,'🖼️','📸','🎞️','✨'].map(function(e,i){return '<div class="thumb'+(i===0?' ON':'')+'">'+e+'</div>';}).join('');
+}
+
+function setDtab(tab){
+  ['desc','install','maj'].forEach(function(t){
+    var el=document.getElementById('dtab-'+t);if(el)el.classList.toggle('ON',t===tab);
+  });
+  var txts={
+    desc:(curPack?curPack.desc:'')+' — Un pack complet et optimisé. Compatible avec la majorité des serveurs FiveM RP. Installation facile, documentation incluse.',
+    install:'1. Télécharge le fichier ZIP\n2. Extrait dans ton dossier resources\n3. Ajoute dans server.cfg :\n   ensure '+(curPack?curPack.name.toLowerCase().replace(/ /g,'-'):'pack'),
+    maj:'v2.0 — Dernière mise à jour : 12/05/2024\n• Corrections de bugs mineurs\n• Optimisation des textures\n• Nouveau contenu ajouté'
+  };
+  document.getElementById('d-txt').textContent=txts[tab]||'';
+}
+document.getElementById('dtab-desc').onclick=function(){setDtab('desc');};
+document.getElementById('dtab-install').onclick=function(){setDtab('install');};
+document.getElementById('dtab-maj').onclick=function(){setDtab('maj');};
+
+// ===== PANIER =====
+function addCart(id){
+  var p=packs.find(function(x){return x.id===id;});if(!p||p.free)return;
+  if(cart.find(function(x){return x.id===id;})){toast('Déjà dans le panier !');return;}
+  cart.push({id:p.id,name:p.name,price:p.price,em:p.em,cat:p.cat,free:false,dlUrl:p.dlUrl||''});
+  updateBadge();toast('Ajouté au panier !');
+}
+function removeCart(id){
+  cart=cart.filter(function(x){return x.id!==id;});
+  updateBadge();renderCart();toast('Article retiré !');
+}
+function updateBadge(){document.getElementById('cart-badge').textContent=cart.length;}
+
+function renderCart(){
+  var el=document.getElementById('cart-items-list');
+  var lbl=document.getElementById('cart-count-label');if(lbl)lbl.textContent=cart.length;
+  if(!cart.length){
+    el.innerHTML='<div style="padding:30px;text-align:center;color:#55556a"><div style="font-size:36px;margin-bottom:8px">🛒</div><div>Ton panier est vide</div></div>';
+    document.getElementById('cs-sub').textContent='0.00 €';
+    document.getElementById('cs-tva').textContent='0.00 €';
+    document.getElementById('cs-total').textContent='0.00 €';
+    return;
+  }
+  el.innerHTML=cart.map(function(item){
+    return '<div class="cart-item"><div class="ci-em">'+item.em+'</div><div class="ci-info"><div class="ci-name">'+item.name+'</div><div class="ci-cat">'+item.cat+'</div></div><span class="ci-price">'+item.price.toFixed(2)+' €</span><button class="ci-del" onclick="removeCart('+item.id+')">✕</button></div>';
+  }).join('');
+  var tot=cart.reduce(function(s,x){return s+x.price;},0);
+  var tva=tot*0.20;
+  document.getElementById('cs-sub').textContent=tot.toFixed(2)+' €';
+  document.getElementById('cs-tva').textContent=tva.toFixed(2)+' €';
+  document.getElementById('cs-total').textContent=(tot+tva).toFixed(2)+' €';
+}
+
+// ===== CHECKOUT =====
+function goCheckout(){
+  if(!cart.length){toast('Ton panier est vide !');return;}
+  G('checkout');fillCkSummary();setStep(2);
+}
+function fillCkSummary(){
+  var tot=cart.reduce(function(s,x){return s+x.price;},0);
+  var tva=tot*0.20;var ttc=tot+tva;
+  var html=cart.map(function(i){return '<div class="oi"><div class="oi-em">'+i.em+'</div><div class="oi-info"><div class="oi-name">'+i.name+'</div><div class="oi-cat">'+i.cat+'</div></div><div class="oi-price">'+i.price.toFixed(2)+' €</div></div>';}).join('');
+  ['ck-items1','ck-items2'].forEach(function(id){var el=document.getElementById(id);if(el)el.innerHTML=html;});
+  ['ck-sub1','ck-sub2'].forEach(function(id){var el=document.getElementById(id);if(el)el.textContent=tot.toFixed(2)+' €';});
+  ['ck-tva1','ck-tva2'].forEach(function(id){var el=document.getElementById(id);if(el)el.textContent=tva.toFixed(2)+' €';});
+  ['ck-ttc1','ck-ttc2'].forEach(function(id){var el=document.getElementById(id);if(el)el.textContent=ttc.toFixed(2)+' €';});
+}
+function setStep(n){
+  ['ck-step2','ck-step3','ck-step4'].forEach(function(id,i){
+    var el=document.getElementById(id);if(!el)return;
+    el.style.display=(i+2===n)?((n===4)?'block':'grid'):'none';
+  });
+  [1,2,3,4].forEach(function(s){
+    var el=document.getElementById('ck-s'+s);if(!el)return;
+    el.className='chk-step'+(s<n?' DONE':s===n?' ACT':'');
+    var num=document.getElementById('cn'+s);if(num)num.textContent=s<n?'✓':s;
+  });
+}
+function selPM(m){
+  curPM=m;
+  ['card','paypal','crypto','paysafe'].forEach(function(x){
+    document.getElementById('pm-'+x).classList.toggle('ON',x===m);
+    document.getElementById('cf-'+x).classList.toggle('ON',x===m);
+  });
+}
+function doPay(){
+  var btn=document.getElementById('btn-pay');
+  btn.disabled=true;btn.textContent='⏳ Traitement en cours...';
+  setTimeout(function(){
+    btn.disabled=false;btn.textContent='🔒 PAYER MAINTENANT';
+    var email=document.getElementById('ck-em').value||'—';
+    var fn=document.getElementById('ck-fn').value,ln=document.getElementById('ck-ln').value;
+    var tot=cart.reduce(function(s,x){return s+x.price;},0);
+    var orderId='FM-'+Date.now().toString().slice(-8);
+    var pmNames={card:'Carte bancaire',paypal:'PayPal',crypto:'Crypto',paysafe:'Paysafecard'};
+    document.getElementById('confirm-email').textContent=email;
+    var dlLinks=cart.filter(function(i){return i.dlUrl;}).map(function(i){return '<div class="co-row"><span>'+i.name+'</span><span><a href="'+i.dlUrl+'" target="_blank" style="color:#2ecc71;font-weight:700;text-decoration:none">⬇ Télécharger</a></span></div>';}).join('');
+    document.getElementById('confirm-details').innerHTML=
+      '<div class="co-row"><span>N° commande</span><span style="color:#e63946;font-family:monospace">'+orderId+'</span></div>'+
+      '<div class="co-row"><span>Client</span><span>'+fn+' '+ln+'</span></div>'+
+      '<div class="co-row"><span>Méthode</span><span>'+pmNames[curPM]+'</span></div>'+
+      '<div class="co-row"><span>Articles</span><span>'+cart.length+' pack(s)</span></div>'+
+      '<div class="co-row"><span>Total TTC</span><span style="color:#2ecc71;font-weight:700">'+(tot*1.20).toFixed(2)+' €</span></div>'+
+      (dlLinks?'<div style="margin-top:8px;padding-top:8px;border-top:1px solid #2a2a3a;font-size:10px;color:#55556a;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Liens de téléchargement</div>'+dlLinks:'');
+    setStep(4);cart=[];updateBadge();
+  },1800);
+}
+
+// ===== ADMIN =====
+function AS(s){
+  ['dash','add','manage','tags','orders'].forEach(function(x){
+    var el=document.getElementById('as-'+x);if(el)el.style.display=x===s?'block':'none';
+  });
+  document.querySelectorAll('.an').forEach(function(el,i){
+    el.classList.toggle('ON',['dash','add','manage','tags','orders'][i]===s);
+  });
+  if(s==='manage')renderTable();
+  if(s==='tags')renderGlobalTags();
+  if(s==='add'){renderTagsFormRow();}
+}
+function updateStats(){
+  var tot=packs.length,fr=packs.filter(function(p){return p.free;}).length;
+  var el;
+  el=document.getElementById('ac-t');if(el)el.textContent=tot;
+  el=document.getElementById('ac-f');if(el)el.textContent=fr;
+  el=document.getElementById('ac-p');if(el)el.textContent=tot-fr;
+  el=document.getElementById('tbl-c');if(el)el.textContent=tot;
+}
+function renderTable(){
+  var tb=document.getElementById('tbl-body');if(!tb)return;
+  tb.innerHTML=packs.map(function(p){
+    return '<tr>'+
+      '<td><div style="display:flex;align-items:center;gap:7px"><div class="pis">'+p.em+'</div><div><div style="font-weight:600">'+p.name+'</div><div style="font-size:10px;color:#55556a">'+p.desc+'</div></div></div></td>'+
+      '<td style="color:#8888aa">'+p.cat+'</td>'+
+      '<td>'+(p.free?'<span style="color:#2ecc71;font-weight:700">GRATUIT</span>':'<b>'+p.price.toFixed(2)+' €</b>')+'</td>'+
+      '<td><span class="sbg '+(p.free?'fr':'pa')+'">'+(p.free?'Gratuit':'Payant')+'</span></td>'+
+      '<td><label class="tog"><input type="checkbox" '+(p.free?'checked':'')+' onchange="togFreeP('+p.id+',this.checked)"><div class="tsl"></div></label></td>'+
+      '<td><div class="abtns"><button class="ab ab-e" onclick="editP('+p.id+')">✏ Éditer</button><button class="ab ab-d" onclick="delP('+p.id+')">🗑</button></div></td>'+
+      '</tr>';
+  }).join('');
+  updateStats();
+}
+function togFreeP(id,v){
+  var p=packs.find(function(x){return x.id===id;});if(p){p.free=v;if(v)p.price=0;}
+  renderTable();renderPacks();toast(v?'Pack passé en gratuit !':'Pack passé en payant !');
+}
+function delP(id){
+  if(!confirm('Supprimer ce pack ?'))return;
+  cart=cart.filter(function(x){return x.id!==id;});
+  packs=packs.filter(function(x){return x.id!==id;});
+  updateBadge();renderTable();renderPacks();toast('Pack supprimé !');
+}
+function editP(id){
+  var p=packs.find(function(x){return x.id===id;});if(!p)return;
+  editingId=id;AS('add');
+  document.getElementById('f-name').value=p.name;
+  document.getElementById('f-cat').value=p.cat;
+  document.getElementById('f-desc').value=p.desc;
+  document.getElementById('f-price').value=p.free?'':p.price;
+  document.getElementById('f-op').value=p.op||'';
+  document.getElementById('f-badge').value=p.badge;
+  document.getElementById('f-em').value=p.em;
+  document.getElementById('f-free').checked=p.free;
+  document.getElementById('f-dl-url').value=p.dlUrl||'';
+  togFreeForm();renderTagsFormRow();
+  // pré-cocher les tags du pack
+  if(p.tags)p.tags.forEach(function(tid){
+    var row=document.getElementById('f-tags-row');if(!row)return;
+    var lbl=row.querySelector('[data-tid="'+tid+'"]');
+    if(lbl){var cb=lbl.querySelector('input');if(cb){cb.checked=true;lbl.classList.add('sel');}}
+  });
+  toast('Pack chargé pour édition');
+}
+function togFreeForm(){
+  var v=document.getElementById('f-free').checked;
+  var fp=document.getElementById('fi-price'),fo=document.getElementById('fi-op');
+  if(fp)fp.style.opacity=v?'0.3':'1';if(fo)fo.style.opacity=v?'0.3':'1';
+  var pi=document.getElementById('f-price'),oi=document.getElementById('f-op');
+  if(pi){pi.disabled=v;if(v)pi.value='';}if(oi){oi.disabled=v;if(v)oi.value='';}
+}
+function savePack(){
+  var name=document.getElementById('f-name').value.trim();
+  var cat=document.getElementById('f-cat').value;
+  var desc=document.getElementById('f-desc').value.trim();
+  var isFree=document.getElementById('f-free').checked;
+  var pr=document.getElementById('f-price').value;
+  var op=document.getElementById('f-op').value;
+  var badge=document.getElementById('f-badge').value;
+  var em=document.getElementById('f-em').value||'📦';
+  var dlUrl=document.getElementById('f-dl-url').value.trim();
+  if(!name){alert('Donne un nom au pack !');return;}
+  if(!desc){alert('Ajoute une description !');return;}
+  if(!isFree&&!pr){alert('Définis le prix ou active le mode gratuit !');return;}
+  var np={id:editingId||Date.now(),name:name,desc:desc,cat:cat,price:isFree?0:parseFloat(pr)||0,op:op?parseFloat(op):null,free:isFree,badge:badge,em:em,dls:0,dlUrl:dlUrl,tags:getSelectedTagIds(),feats:[cat+' FiveM','Optimisé serveurs RP','Installation facile']};
+  if(editingId){var ex=packs.findIndex(function(p){return p.id===editingId;});if(ex>=0)packs[ex]=Object.assign({},packs[ex],np,{id:editingId,dls:packs[ex].dls});}
+  else packs.push(np);
+  editingId=null;
+  document.getElementById('f-name').value='';document.getElementById('f-desc').value='';
+  document.getElementById('f-price').value='';document.getElementById('f-op').value='';
+  document.getElementById('f-badge').value='';document.getElementById('f-em').value='📦';
+  document.getElementById('f-free').checked=false;document.getElementById('f-dl-url').value='';
+  document.getElementById('img-prev').innerHTML='';document.getElementById('file-prev').textContent='';
+  togFreeForm();renderTagsFormRow();renderPacks();AS('manage');toast('Pack publié avec succès !');
+}
+
+// ===== TAGS =====
+function hexToRgba(hex,a){
+  var r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16);
+  return 'rgba('+r+','+g+','+b+','+a+')';
+}
+function renderGlobalTags(){
+  var el=document.getElementById('global-tag-list');if(!el)return;
+  if(!globalTags.length){el.innerHTML='<span style="font-size:11px;color:#55556a">Aucun tag créé.</span>';return;}
+  el.innerHTML=globalTags.map(function(t){
+    return '<span class="tag" style="color:'+t.color+';border-color:'+t.color+'44;background:'+hexToRgba(t.color,0.1)+'">'+
+      t.name+
+      '<button class="tag-rm" onclick="delTag('+t.id+')" title="Supprimer">✕</button>'+
+    '</span>';
+  }).join('');
+}
+function renderTagsFormRow(){
+  var row=document.getElementById('f-tags-row');if(!row)return;
+  var packTags=(editingId?(packs.find(function(p){return p.id===editingId;})||{}).tags||[]:[]);
+  if(!globalTags.length){row.innerHTML='<div style="font-size:11px;color:#55556a">Crée d\'abord des tags dans la section 🏷️ Tags</div>';return;}
+  row.innerHTML=globalTags.map(function(t){
+    var sel=packTags.indexOf(t.id)>=0;
+    return '<label class="tag-check'+(sel?' sel':'')+'" style="--tc:'+t.color+';--tc-bg:'+hexToRgba(t.color,0.13)+'" data-tid="'+t.id+'">'+
+      '<input type="checkbox" value="'+t.id+'"'+(sel?' checked':'')+'>'+
+      '<span class="tag-dot" style="background:'+t.color+'"></span>'+
+      '<span>'+t.name+'</span>'+
+    '</label>';
+  }).join('');
+  row.querySelectorAll('.tag-check').forEach(function(lbl){
+    lbl.addEventListener('click',function(){
+      var cb=lbl.querySelector('input');
+      cb.checked=!cb.checked;
+      lbl.classList.toggle('sel',cb.checked);
+    });
+  });
+}
+function getSelectedTagIds(){
+  var row=document.getElementById('f-tags-row');if(!row)return[];
+  return Array.from(row.querySelectorAll('input[type=checkbox]:checked')).map(function(i){return parseInt(i.value);});
+}
+function delTag(id){
+  if(!confirm('Supprimer ce tag ? Il sera retiré de tous les packs.'))return;
+  globalTags=globalTags.filter(function(t){return t.id!==id;});
+  packs.forEach(function(p){if(p.tags)p.tags=p.tags.filter(function(tid){return tid!==id;});});
+  renderGlobalTags();renderTagsFormRow();renderPacks();toast('Tag supprimé !');
+}
+document.addEventListener('click',function(e){
+  if(e.target&&e.target.id==='btn-add-tag'){
+    var inp=document.getElementById('tag-name-input');
+    var col=document.getElementById('tag-color-input');
+    var name=inp.value.trim();
+    if(!name){toast('Donne un nom au tag !');return;}
+    if(globalTags.find(function(t){return t.name.toLowerCase()===name.toLowerCase();})){toast('Ce tag existe déjà !');return;}
+    globalTags.push({id:Date.now(),name:name,color:col.value});
+    inp.value='';
+    renderGlobalTags();renderTagsFormRow();toast('Tag "'+name+'" créé !');
+  }
+});
+
+// ===== MODAL DL =====
+function openMdl(id){
+  var p=packs.find(function(x){return x.id===id;});if(!p)return;
+  mdlPack=p;document.getElementById('mdl-name').textContent=p.name;
+  document.getElementById('mdl').classList.add('ON');
+}
+document.getElementById('mdl-dl').onclick=function(){
+  document.getElementById('mdl').classList.remove('ON');
+  if(mdlPack){
+    mdlPack.dls++;
+    if(mdlPack.dlUrl){window.open(mdlPack.dlUrl,'_blank');}
+    else{toast('Aucun lien de téléchargement configuré.');}
+  }
+};document.getElementById('mdl-cancel').onclick=function(){document.getElementById('mdl').classList.remove('ON');};
+
+// ===== AUTH =====
+function openAuth(tab){
+  document.getElementById('auth-overlay').classList.add('ON');
+  switchAuth(tab||'login');clearAuthMsg();
+}
+function closeAuth(){document.getElementById('auth-overlay').classList.remove('ON');}
+function switchAuth(tab){
+  document.getElementById('atab-login').classList.toggle('ON',tab==='login');
+  document.getElementById('atab-register').classList.toggle('ON',tab==='register');
+  document.getElementById('aform-login').style.display=tab==='login'?'block':'none';
+  document.getElementById('aform-register').style.display=tab==='register'?'block':'none';
+  document.getElementById('aform-forgot').style.display='none';
+  clearAuthMsg();
+}
+function clearAuthMsg(){
+  var e=document.getElementById('auth-err'),o=document.getElementById('auth-ok');
+  e.className='auth-err';o.className='auth-ok';
+}
+function showAuthErr(msg){var e=document.getElementById('auth-err');e.textContent=msg;e.className='auth-err ON';}
+function showAuthOk(msg){var e=document.getElementById('auth-ok');e.textContent=msg;e.className='auth-ok ON';}
+
+function doLogin(){
+  clearAuthMsg();
+  var email=document.getElementById('l-email').value.trim().toLowerCase();
+  var pass=document.getElementById('l-pass').value;
+  if(!email||!pass){showAuthErr('Remplis tous les champs.');return;}
+  var user=users.find(function(u){return u.email===email;});
+  if(!user){showAuthErr('Aucun compte trouvé avec cet email.');return;}
+  if(user.pass!==btoa(unescape(encodeURIComponent(pass)))){showAuthErr('Mot de passe incorrect.');return;}
+  loginOk(user);
+}
+function doRegister(){
+  clearAuthMsg();
+  var fn=document.getElementById('r-fn').value.trim(),ln=document.getElementById('r-ln').value.trim();
+  var email=document.getElementById('r-email').value.trim().toLowerCase();
+  var pseudo=document.getElementById('r-pseudo').value.trim();
+  var pass=document.getElementById('r-pass').value,pass2=document.getElementById('r-pass2').value;
+  var cgu=document.getElementById('r-cgu').checked;
+  if(!fn||!ln||!email||!pseudo||!pass){showAuthErr('Remplis tous les champs obligatoires.');return;}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){showAuthErr('Email invalide.');return;}
+  if(pass.length<8){showAuthErr('Mot de passe trop court (8 caractères min).');return;}
+  if(pass!==pass2){showAuthErr('Les mots de passe ne correspondent pas.');return;}
+  if(!cgu){showAuthErr("Accepte les conditions d'utilisation.");return;}
+  if(users.find(function(u){return u.email===email;})){showAuthErr('Cet email est déjà utilisé.');return;}
+  var newU={id:'u'+Date.now(),pseudo:pseudo,email:email,pass:btoa(unescape(encodeURIComponent(pass))),avatar:(fn[0]||'?').toUpperCase()+(ln[0]||'').toUpperCase(),provider:'email'};
+  users.push(newU);loginOk(newU);
+}
+function doForgot(){
+  clearAuthMsg();
+  var email=document.getElementById('f-email').value.trim().toLowerCase();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){showAuthErr('Email invalide.');return;}
+  showAuthOk('📧 Lien envoyé à '+email);
+  setTimeout(function(){switchAuth('login');},2200);
+}
+function loginOk(user){
+  curUser=user;closeAuth();updateNavAuth();
+  toast('Bienvenue '+user.pseudo+' ! 👋');
+}
+function logout(){
+  curUser=null;document.getElementById('user-menu').classList.remove('ON');
+  updateNavAuth();toast('Déconnecté.');
+}
+function updateNavAuth(){
+  var out=document.getElementById('nav-auth-out'),inEl=document.getElementById('nav-auth-in');
+  if(curUser){
+    out.style.display='none';inEl.style.display='flex';
+    document.getElementById('nav-ava').textContent=curUser.avatar||(curUser.pseudo[0]||'?').toUpperCase();
+    document.getElementById('um-name').textContent=curUser.pseudo;
+  } else {
+    out.style.display='flex';inEl.style.display='none';
+  }
+}
+
+// ===== PASSWORD STRENGTH =====
+document.getElementById('r-pass').addEventListener('input',function(){
+  var v=this.value,score=0;
+  if(v.length>=8)score++;if(/[A-Z]/.test(v))score++;if(/[0-9]/.test(v))score++;if(/[^A-Za-z0-9]/.test(v))score++;
+  var bar=document.getElementById('pw-bar');
+  var cols=['#e63946','#f39c12','#f1c40f','#2ecc71'];
+  var ws=['25%','50%','75%','100%'];
+  bar.style.width=v.length?(ws[score-1]||'15%'):'0';
+  bar.style.background=v.length?(cols[score-1]||'#e63946'):'transparent';
+});
+
+// ===== UPLOADS =====
+document.getElementById('f-img-input').addEventListener('change',function(e){
+  var prev=document.getElementById('img-prev');
+  Array.from(e.target.files).slice(0,5).forEach(function(){
+    var d=document.createElement('div');
+    d.style.cssText='width:52px;height:44px;border-radius:4px;background:#0e0e18;border:1px solid #2a2a3a;display:flex;align-items:center;justify-content:center;font-size:18px;position:relative;flex-shrink:0';
+    d.innerHTML='🖼️<div onclick="this.parentElement.remove()" style="position:absolute;top:-3px;right:-3px;width:13px;height:13px;background:#e63946;border-radius:50%;font-size:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#fff;font-weight:700">✕</div>';
+    prev.appendChild(d);
+  });
+});
+document.getElementById('f-free').addEventListener('change',togFreeForm);
+
+// ===== TOAST =====
+function toast(msg){
+  var t=document.getElementById('toast');
+  document.getElementById('tmsg').textContent=msg;
+  t.classList.add('ON');
+  clearTimeout(t._timer);
+  t._timer=setTimeout(function(){t.classList.remove('ON');},2500);
+}
+
+// ===== WIRING ALL BUTTONS =====
+document.getElementById('logo').onclick=function(){G('shop');filterCat('all');};
+document.getElementById('nl-home').onclick=function(){G('shop');filterCat('all');};
+document.getElementById('nl-packs').onclick=function(){G('shop');filterCat('Graphiques');};
+document.getElementById('nl-armes').onclick=function(){G('shop');filterCat('Armes');};
+document.getElementById('nl-veh').onclick=function(){G('shop');filterCat('Véhicules');};
+document.getElementById('nl-scripts').onclick=function(){G('shop');filterCat('Scripts');};
+document.getElementById('nl-maps').onclick=function(){G('shop');filterCat('Maps');};
+document.getElementById('cart-btn').onclick=function(){G('cart');};
+document.getElementById('adm-btn').onclick=function(){G('admin');};
+document.getElementById('hero-btn').onclick=function(){document.getElementById('packs-area').scrollIntoView({behavior:'smooth'});};
+document.getElementById('see-all1').onclick=function(){filterCat('all');};
+document.getElementById('see-all2').onclick=function(){filterCat('all');};
+document.getElementById('sbi-all').onclick=function(){filterCat('all');};
+document.getElementById('sbi-free').onclick=function(){filterCat('free');};
+document.getElementById('sbi-paid').onclick=function(){filterCat('paid');};
+document.getElementById('sbi-new').onclick=function(){filterCat('new');};
+document.getElementById('sbi-Graphiques').onclick=function(){filterCat('Graphiques');};
+document.getElementById('sbi-Armes').onclick=function(){filterCat('Armes');};
+document.getElementById('sbi-Vehicules').onclick=function(){filterCat('Véhicules');};
+document.getElementById('sbi-Scripts').onclick=function(){filterCat('Scripts');};
+document.getElementById('sbi-Maps').onclick=function(){filterCat('Maps');};
+document.getElementById('brd-home').onclick=function(){G('shop');filterCat('all');};
+document.getElementById('brd-shop').onclick=function(){G('shop');};
+document.getElementById('btn-checkout').onclick=goCheckout;
+document.getElementById('btn-continue').onclick=function(){G('shop');};
+document.getElementById('btn-step3').onclick=function(){
+  var fields=['ck-fn','ck-ln','ck-em','ck-ad','ck-ci','ck-zp'];
+  var ok=true;
+  fields.forEach(function(id){var el=document.getElementById(id);if(!el.value.trim()){el.classList.add('ERR');ok=false;}else{el.classList.remove('ERR');}});
+  if(!ok){toast('Remplis tous les champs obligatoires !');return;}
+  fillCkSummary();setStep(3);
+};
+document.getElementById('btn-back-cart').onclick=function(){G('cart');};
+document.getElementById('btn-pay').onclick=doPay;
+document.getElementById('btn-back-info').onclick=function(){setStep(2);};
+document.getElementById('btn-confirm-home').onclick=function(){G('shop');};
+document.getElementById('adm-back').onclick=function(){G('shop');};
+document.getElementById('an-dash').onclick=function(){AS('dash');};
+document.getElementById('an-add').onclick=function(){AS('add');};
+document.getElementById('an-manage').onclick=function(){AS('manage');};
+document.getElementById('an-tags').onclick=function(){AS('tags');};
+document.getElementById('an-orders').onclick=function(){AS('orders');};
+document.getElementById('tbl-add-btn').onclick=function(){AS('add');};
+document.getElementById('btn-save-pack').onclick=savePack;
+document.getElementById('pm-card').onclick=function(){selPM('card');};
+document.getElementById('pm-paypal').onclick=function(){selPM('paypal');};
+document.getElementById('pm-crypto').onclick=function(){selPM('crypto');};
+document.getElementById('pm-paysafe').onclick=function(){selPM('paysafe');};
+document.getElementById('btn-login').onclick=function(){openAuth('login');};
+document.getElementById('btn-register').onclick=function(){openAuth('register');};
+document.getElementById('auth-close').onclick=closeAuth;
+document.getElementById('auth-overlay').onclick=function(e){if(e.target===this)closeAuth();};
+document.getElementById('atab-login').onclick=function(){switchAuth('login');};
+document.getElementById('atab-register').onclick=function(){switchAuth('register');};
+document.getElementById('a-forgot').onclick=function(){document.getElementById('aform-login').style.display='none';document.getElementById('aform-forgot').style.display='block';clearAuthMsg();};
+document.getElementById('a-to-reg').onclick=function(){switchAuth('register');};
+document.getElementById('a-to-login').onclick=function(){switchAuth('login');};
+document.getElementById('a-back-login').onclick=function(){switchAuth('login');};
+document.getElementById('btn-login-submit').onclick=doLogin;
+document.getElementById('btn-reg-submit').onclick=doRegister;
+document.getElementById('btn-forgot-submit').onclick=doForgot;
+document.getElementById('btn-discord').onclick = function() {
+  window.location.href = '/auth/discord';
+};document.getElementById('nav-ava').onclick=function(){document.getElementById('user-menu').classList.toggle('ON');};
+document.getElementById('um-cart').onclick=function(){document.getElementById('user-menu').classList.remove('ON');G('cart');};
+document.getElementById('um-logout').onclick=logout;
+document.addEventListener('click',function(e){
+  var w=document.getElementById('nav-auth-in');
+  if(w&&!w.contains(e.target))document.getElementById('user-menu').classList.remove('ON');
+});
+
+// ===== INIT =====
+renderPacks();
+
+// ===== SESSION DISCORD =====
+(async function checkDiscordSession() {
+  try {
+    var res = await fetch('/api/me', { credentials: 'include' });
+    var data = await res.json();
+    if (data.user) {
+      curUser = data.user;
+      closeAuth();
+      updateNavAuth();
+      if (data.user.avatar) {
+        var ava = document.getElementById('nav-ava');
+        ava.innerHTML = '<img src="'+data.user.avatar+'" style="width:24px;height:24px;border-radius:50%;object-fit:cover;">';
+      }
+      toast('Bienvenue ' + data.user.pseudo + ' ! 👋');
+
+      // Vérifie si admin
+      try {
+        var adminRes = await fetch('/api/is-admin', { credentials: 'include' });
+        var adminData = await adminRes.json();
+        if (adminData.admin) {
+          document.getElementById('adm-btn').style.display = 'flex';
+        }
+      } catch(e) {}
+    }
+  } catch(e) {}
+
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('auth_success')) {
+    history.replaceState({}, '', '/');
+  }
+  if (params.get('auth_error')) {
+    toast('Erreur de connexion Discord ❌');
+    history.replaceState({}, '', '/');
+  }
+})();
+</script>
