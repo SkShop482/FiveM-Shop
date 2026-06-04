@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: fivem-store
+    env: node
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DISCORD_CLIENT_ID
+        value: 1511698345138192394
+      - key: DISCORD_CLIENT_SECRET
+        sync: false          # à remplir manuellement dans Render dashboard
+      - key: REDIRECT_URI
+        sync: false          # ex: https://fivem-store.onrender.com/auth/discord/callback
+      - key: FRONTEND_URL
+        sync: false          # ex: https://fivem-store.onrender.com
+      - key: SESSION_SECRET
+        generateValue: true  # Render génère automatiquement un secret sécurisé
