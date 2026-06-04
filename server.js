@@ -1,6 +1,7 @@
 const express = require('express');
 const session = require('express-session');
 const cors = require('cors');
+const path = require('path');
 const fetch = (...args) => import('node-fetch').then(({default: f}) => f(...args));
 
 const app = express();
@@ -34,7 +35,8 @@ app.use(session({
   }
 }));
 
-app.use(express.static('public'));
+// Sert le fichier HTML frontend
+app.use(express.static(path.join(__dirname, 'public')));
 
 // ─── FONCTIONS BOT DISCORD ────────────────────────────────────────────────────
 
@@ -152,5 +154,9 @@ app.post('/api/commande', async (req, res) => {
   }
 });
 
-// ─── EXPORT POUR VERCEL (pas de app.listen) ───────────────────────────────────
+// Toutes les autres routes → index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 module.exports = app;
