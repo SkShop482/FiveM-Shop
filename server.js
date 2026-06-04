@@ -21,9 +21,21 @@ const ADMIN_DISCORD_IDS = process.env.ADMIN_DISCORD_IDS
   ? process.env.ADMIN_DISCORD_IDS.split(',').map(id => id.trim())
   : ['1063894863894040747', '1148182031642144809'];
 
+// ─── SESSION AVEC UPSTASH REDIS ───────────────────────────────────────────────
+const RedisStore = require('connect-redis').default;
+const { createClient } = require('redis');
+
+const redisClient = createClient({
+  url: process.env.UPSTASH_REDIS_REST_URL,
+  password: process.env.UPSTASH_REDIS_REST_TOKEN,
+  socket: { tls: true }
+});
+redisClient.connect().catch(console.error);
+
 app.use(cors({ origin: FRONTEND_URL, credentials: true }));
 app.use(express.json());
 app.use(session({
+  store: new RedisStore({ client: redisClient }),
   secret: SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
@@ -35,7 +47,6 @@ app.use(session({
   }
 }));
 
-// Sert le fichier HTML frontend
 app.use(express.static(path.join(__dirname, 'public')));
 
 // ─── FONCTIONS BOT DISCORD ────────────────────────────────────────────────────
@@ -154,7 +165,6 @@ app.post('/api/commande', async (req, res) => {
   }
 });
 
-// Toutes les autres routes → index.html
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
