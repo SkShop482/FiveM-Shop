@@ -6,7 +6,6 @@ const fetch = (...args) => import('node-fetch').then(({default: f}) => f(...args
 
 const app = express();
 
-// ─── CONFIG ───────────────────────────────────────────────────────────────────
 const DISCORD_CLIENT_ID     = process.env.DISCORD_CLIENT_ID;
 const DISCORD_CLIENT_SECRET = process.env.DISCORD_CLIENT_SECRET;
 const DISCORD_BOT_TOKEN     = process.env.DISCORD_BOT_TOKEN;
@@ -15,27 +14,15 @@ const DISCORD_BUYER_ROLE    = process.env.DISCORD_BUYER_ROLE;
 const DISCORD_GUILD_ID      = process.env.DISCORD_GUILD_ID;
 const REDIRECT_URI          = process.env.REDIRECT_URI;
 const FRONTEND_URL          = process.env.FRONTEND_URL;
-const SESSION_SECRET        = process.env.SESSION_SECRET;
+const SESSION_SECRET        = process.env.SESSION_SECRET || 'secret';
 
 const ADMIN_DISCORD_IDS = process.env.ADMIN_DISCORD_IDS
   ? process.env.ADMIN_DISCORD_IDS.split(',').map(id => id.trim())
   : ['1063894863894040747', '1148182031642144809'];
 
-// ─── SESSION AVEC UPSTASH REDIS ───────────────────────────────────────────────
-const RedisStore = require('connect-redis').default;
-const { createClient } = require('redis');
-
-const redisClient = createClient({
-  url: process.env.UPSTASH_REDIS_REST_URL,
-  password: process.env.UPSTASH_REDIS_REST_TOKEN,
-  socket: { tls: true }
-});
-redisClient.connect().catch(console.error);
-
 app.use(cors({ origin: FRONTEND_URL, credentials: true }));
 app.use(express.json());
 app.use(session({
-  store: new RedisStore({ client: redisClient }),
   secret: SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
@@ -48,8 +35,6 @@ app.use(session({
 }));
 
 app.use(express.static(path.join(__dirname, 'public')));
-
-// ─── FONCTIONS BOT DISCORD ────────────────────────────────────────────────────
 
 async function notifierCommande(commande) {
   const { pseudo, avatar, articles, total, discordId } = commande;
@@ -79,8 +64,6 @@ async function donnerRoleAcheteur(discordId) {
   );
   return res.ok;
 }
-
-// ─── OAUTH DISCORD ────────────────────────────────────────────────────────────
 
 app.get('/auth/discord', (req, res) => {
   const params = new URLSearchParams({
@@ -132,8 +115,6 @@ app.get('/auth/discord/callback', async (req, res) => {
   }
 });
 
-// ─── API ──────────────────────────────────────────────────────────────────────
-
 app.get('/api/me', (req, res) => {
   res.json({ user: req.session.user || null });
 });
@@ -169,4 +150,5 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-module.exports = app;
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
