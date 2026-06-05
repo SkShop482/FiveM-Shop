@@ -862,27 +862,35 @@ function selPM(m){
 }
 function doPay(){
   var btn=document.getElementById('btn-pay');
-  btn.disabled=true;btn.textContent='⏳ Traitement en cours...';
-  setTimeout(function(){
-    btn.disabled=false;btn.textContent='🔒 PAYER MAINTENANT';
-    var email=document.getElementById('ck-em').value||'—';
-    var fn=document.getElementById('ck-fn').value,ln=document.getElementById('ck-ln').value;
-    var tot=cart.reduce(function(s,x){return s+x.price;},0);
-    var orderId='FM-'+Date.now().toString().slice(-8);
-    var pmNames={card:'Carte bancaire',paypal:'PayPal',crypto:'Crypto',paysafe:'Paysafecard'};
-    document.getElementById('confirm-email').textContent=email;
-    var dlLinks=cart.filter(function(i){return i.dlUrl;}).map(function(i){return '<div class="co-row"><span>'+i.name+'</span><span><a href="'+i.dlUrl+'" target="_blank" style="color:#2ecc71;font-weight:700;text-decoration:none">⬇ Télécharger</a></span></div>';}).join('');
-    document.getElementById('confirm-details').innerHTML=
-      '<div class="co-row"><span>N° commande</span><span style="color:#e63946;font-family:monospace">'+orderId+'</span></div>'+
-      '<div class="co-row"><span>Client</span><span>'+fn+' '+ln+'</span></div>'+
-      '<div class="co-row"><span>Méthode</span><span>'+pmNames[curPM]+'</span></div>'+
-      '<div class="co-row"><span>Articles</span><span>'+cart.length+' pack(s)</span></div>'+
-      '<div class="co-row"><span>Total TTC</span><span style="color:#2ecc71;font-weight:700">'+(tot*1.20).toFixed(2)+' €</span></div>'+
-      (dlLinks?'<div style="margin-top:8px;padding-top:8px;border-top:1px solid #2a2a3a;font-size:10px;color:#55556a;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Liens de téléchargement</div>'+dlLinks:'');
-    setStep(4);cart=[];updateBadge();
-  },1800);
-}
+  btn.disabled=true;btn.textContent='⏳ Redirection vers le paiement...';
 
+  var tot=cart.reduce(function(s,x){return s+x.price;},0);
+  var ttc=tot*1.20;
+  var productName=cart.map(function(i){return i.name;}).join(', ');
+
+  fetch('/api/create-checkout',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({
+      productName: productName,
+      price: parseFloat(ttc.toFixed(2)),
+      productId: cart.map(function(i){return i.id;}).join('-')
+    })
+  })
+  .then(function(r){return r.json();})
+  .then(function(data){
+    if(data.url){
+      window.location.href=data.url;
+    } else {
+      toast('❌ Erreur paiement : '+( data.error||'inconnue'));
+      btn.disabled=false;btn.textContent='🔒 PAYER MAINTENANT';
+    }
+  })
+  .catch(function(){
+    toast('❌ Erreur réseau, réessaie.');
+    btn.disabled=false;btn.textContent='🔒 PAYER MAINTENANT';
+  });
+}
 // ===== ADMIN =====
 function AS(s){
   ['dash','add','manage','tags','orders'].forEach(function(x){
@@ -1266,6 +1274,17 @@ renderPacks();
   if (params.get('auth_error')) {
     toast('Erreur de connexion Discord ❌');
     history.replaceState({}, '', '/');
+  }
+  (function(){
+  var params=new URLSearchParams(window.location.search);
+  if(params.get('payment')==='success'){
+    cart=[];updateBadge();
+    toast('✅ Paiement validé ! Merci pour ton achat.');
+    history.replaceState({},'',' /');
+  }
+  if(params.get('payment')==='cancelled'){
+    toast('⚠️ Paiement annulé.');
+    history.replaceState({},'','/');
   }
 })();
 </script>
