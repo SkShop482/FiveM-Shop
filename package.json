@@ -1,7 +1,6 @@
 {
   "name": "fivem-store-backend",
   "version": "1.0.0",
-  "type": "module",
   "description": "Backend Node.js pour FiveM Store avec OAuth Discord",
   "main": "server.js",
   "scripts": {
